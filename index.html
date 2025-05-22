@@ -195,7 +195,7 @@
   <section id="intro">
     <h2>Välkommen till Nalari</h2>
     <p>Nalari är ett konstruerat språk med enkel grammatik och ett vackert ljudsystem. Här kan du lära dig alfabetet, fonetiken, grammatiken och mycket mer.</p>
-    <a href="#alphabet" class="btn">Utforska alfabetet</a>
+    <a href="alphabet.html" class="btn">Utforska alfabetet</a>
   </section>
 
   <section id="alphabet">
@@ -209,13 +209,13 @@
   <section id="grammar">
     <h2>Grammatik</h2>
     <p>Enkel SVO-ordföljd, tydliga tidsmarkörer och negation. Nalari är lätt att lära sig men ändå uttrycksfullt.</p>
-    <a href="#grammar" class="btn">Läs mer om grammatiken</a>
+    <a href="grammar.html" class="btn">Läs mer om grammatiken</a>
   </section>
 
   <section id="vocabulary">
     <h2>Ordförråd</h2>
     <p>Bygg ditt ordförråd steg för steg. Här hittar du vanliga ord och fraser på Nalari.</p>
-    <a href="#vocabulary" class="btn">Börja lära dig ord</a>
+    <a href="vocabulary.html" class="btn">Börja lära dig ord</a>
   </section>
 </main>
 
@@ -260,33 +260,4 @@
     div.appendChild(text);
 
     // Eventuell klickfunktion för ljud kommer här (om du lägger till ljudfiler)
-    div.addEventListener('click', () => {
-      alert(`Här kan du lägga till ljud för bokstaven ${letter}`);
-    });
-
-    container.appendChild(div);
-  });
-
-  // Språkknappar - enkel demo för språkbyte (ändra text på sidan)
-  const buttons = document.querySelectorAll('#language-switcher button');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const lang = btn.dataset.lang;
-
-      // Demo: byt bara introtekst - du kan utöka med riktig översättning
-      const intro = document.querySelector('#intro p');
-      if(lang === 'sv') {
-        intro.textContent = 'Nalari är ett konstruerat språk med enkel grammatik och ett vackert ljudsystem. Här kan du lära dig alfabetet, fonetiken, grammatiken och mycket mer.';
-      } else if(lang === 'en') {
-        intro.textContent = 'Nalari is a constructed language with simple grammar and a beautiful sound system. Here you can learn the alphabet, phonetics, grammar, and much more.';
-      } else if(lang === 'na') {
-        intro.textContent = 'Nalari mi nala to meto ka mira sa toma min rira; mi fa lira meto, fonetik, grammatika, lira toti.';
-      }
-    });
-  });
-</script>
-
-</body>
-</html>
+    div.addEventListener('click',
