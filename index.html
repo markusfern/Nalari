@@ -127,10 +127,6 @@
     a:hover {
       text-decoration: underline;
     }
-    /* Scrollbar for accordion content if needed */
-    .accordion-content {
-      overflow-y: auto;
-    }
   </style>
 </head>
 <body>
@@ -242,4 +238,87 @@
               <tr><td>mira</td><td>äta</td></tr>
               <tr><td>sira</td><td>sova</td></tr>
               <tr><td>pano</td><td>vän</td></tr>
-              <tr><td>pano-in</td><td>vänner</
+              <tr><td>pano-in</td><td>vänner</td></tr>
+              <tr><td>ka</td><td>dåtid</td></tr>
+              <tr><td>sa</td><td>framtid</td></tr>
+              <tr><td>no</td><td>nej/inte</td></tr>
+              <tr><td>fa</td><td>hjälpverb (pågående)</td></tr>
+              <tr><td>du</td><td>hjälpverb (perfekt)</td></tr>
+              <tr><td>li</td><td>frågepartikel</td></tr>
+              <tr><td>miranala</td><td>dricka (äta vatten)</td></tr>
+              <tr><td>kala</td><td>sol</td></tr>
+              <tr><td>sera</td><td>stjärna</td></tr>
+              <tr><td>luma</td><td>ljus</td></tr>
+              <tr><td>muta</td><td>ord</td></tr>
+              <tr><td>pata</td><td>fot</td></tr>
+              <tr><td>kisa</td><td>katt</td></tr>
+              <tr><td>maki</td><td>skapa</td></tr>
+              <tr><td>rila</td><td>lära</td></tr>
+              <tr><td>sani</td><td>snö</td></tr>
+              <tr><td>pata-in</td><td>fötter</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>Exempelmeningar (30)</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <ol>
+            <li>Mi lira nala. (Jag går till vattnet.)</li>
+            <li>Ti mira sira. (Du äter maten.)</li>
+            <li>Si sira ka no. (Han/hon sov inte igår.)</li>
+            <li>Min toma es stor. (Mitt hus är stort.)</li>
+            <li>Ti pano-in lira fa meto. (Dina vänner går med människan.)</li>
+            <li>No mira ka pana. (Jag åt inte brödet.)</li>
+            <li>Sa lira ti. (Du ska gå.)</li>
+            <li>Mi pano es trev. (Jag är en vän.)</li>
+            <li>Ti no sira. (Du sover inte.)</li>
+            <li>Miranala es mi fa ti. (Drick vattnet från mig till dig.)</li>
+            <li>Kala es luma ka nala. (Solen är ljus vid vattnet.)</li>
+            <li>Sani no fa es mi lira. (Snön hindrar mig från att gå.)</li>
+            <li>Pata-in es vikt. (Fötterna är viktiga.)</li>
+            <li>Kisa mira fa sira. (Katten äter medan den sover.)</li>
+            <li>Mi rila Nalari. (Jag lär mig Nalari.)</li>
+            <li>Ti maki toma. (Du bygger ett hus.)</li>
+            <li>Si no lira sa nala. (Han/hon går inte till vattnet i morgon.)</li>
+            <li>Min pano es glad. (Min vän är glad.)</li>
+            <li>Mi sira li? (Sover jag?)</li>
+            <li>Ti fa mira pano-in. (Du äter med vännerna.)</li>
+            <li>Ka sira mi no. (Jag sov inte igår.)</li>
+            <li>Sa rila ti toma. (Du ska lära dig huset.)</li>
+            <li>Mi no fa mira. (Jag äter inte nu.)</li>
+            <li>Si lira nala ka. (Han/hon gick till vattnet igår.)</li>
+            <li>Pano-in es sam. (Vännerna är många.)</li>
+            <li>Mi fa du mira. (Jag har ätit.)</li>
+            <li>Ti lira fa kala. (Du går i solen.)</li>
+            <li>Mi mira maki. (Jag äter för att skapa.)</li>
+            <li>Min toma es fin. (Mitt hus är fint.)</li>
+            <li>Mi pano fa lira li? (Går min vän nu?)</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Nalari - Skapat tillsammans med AI och människa</p>
+  </footer>
+
+  <script>
+    // Accordion expand/collapse functionality
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const accordion = header.parentElement;
+        const isActive = accordion.classList.contains('active');
+
+        // Stäng alla andra accordions om du vill att bara en ska vara öppen samtidigt
+        // Uncomment below if needed:
+        // document.querySelectorAll('.accordion.active').forEach(acc => {
+        //   if (acc !== accordion) acc.classList.remove('active');
+        // });
+
+        if (isActive)
