@@ -1,331 +1,247 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nalari – Avancerad språkportal</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nalari – Avancerad språkportal</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #3a86ff 20%, #8338ec 60%, #ff006e 100%);
+    color: #f0e6fa;
+    margin: 0; padding: 2rem;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #ff6fb2;
+  }
+  header p {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0.3rem 0 0;
+    color: #ffd6e8;
+  }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  section {
+    max-width: 900px;
+    margin: 0 auto 4rem;
+    background: rgba(31, 0, 55, 0.85);
+    border-radius: 15px;
+    padding: 2rem;
+  }
+  h2 {
+    color: #ff6fb2;
+    margin-bottom: 1rem;
+  }
 
-  <style>
-    :root {
-      --color-primary: #ff6fb2;
-      --color-secondary: #ff4081;
-      --color-bg-gradient1: #3a86ff;
-      --color-bg-gradient2: #8338ec;
-      --color-bg-gradient3: #ff006e;
-      --color-light: #f0e6fa;
-      --color-dark: #1f0037;
-      --color-accent: #ffd6e8;
-    }
+  /* Alfabet */
+  #alphabet-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(70px,1fr));
+    gap: 1rem;
+  }
+  .letter {
+    background: #44114fcc;
+    padding: 1rem 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    color: #ffd6e8;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .letter:hover, .letter:focus {
+    background: #ff6fb2;
+    color: #1f0037;
+    outline: none;
+    transform: scale(1.2);
+  }
+  .letter-desc {
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    color: #e8cde6cc;
+  }
 
-    * {
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-      font-size: 18px;
-    }
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(135deg, var(--color-bg-gradient1) 20%, var(--color-bg-gradient2) 60%, var(--color-bg-gradient3) 100%);
-      color: var(--color-light);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+  /* Tabbar */
+  .tabs {
+    display: flex;
+    border-bottom: 3px solid #ff4081;
+    margin-bottom: 1rem;
+  }
+  .tab {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    background: #44114fcc;
+    color: #ff6fb2;
+    font-weight: 700;
+    user-select: none;
+    border-radius: 10px 10px 0 0;
+    border: 2px solid transparent;
+    border-bottom: none;
+    transition: background-color 0.3s ease;
+  }
+  .tab:hover, .tab:focus {
+    background: #ff6fb2;
+    color: #1f0037;
+    outline: none;
+  }
+  .tab.active {
+    background: #ff4081;
+    color: white;
+    border-color: #ff4081;
+    border-bottom: 3px solid #44114f;
+  }
 
-    /* Parallax backgrounds */
-    .parallax-bg {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      pointer-events: none;
-      z-index: -1;
-      transform-style: preserve-3d;
-      will-change: transform;
-      opacity: 0.2;
-    }
-    #bg1 { background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1471&q=80'); }
-    #bg2 { background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1470&q=80'); opacity: 0.12; }
+  .tab-content {
+    background: #44114fcc;
+    border-radius: 0 15px 15px 15px;
+    padding: 1.5rem;
+    color: #ffd6e8;
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(31,0,55,0.9);
-      text-align: center;
-      padding: 2.5rem 1rem 3rem;
-      border-bottom: 4px solid var(--color-primary);
-      box-shadow: 0 0 15px var(--color-primary);
-      z-index: 10;
-      user-select: none;
-    }
-    header h1 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 4.2rem;
-      margin: 0;
-      color: var(--color-primary);
-      letter-spacing: 0.16em;
-      text-shadow: 0 0 12px var(--color-secondary);
-    }
-    header p {
-      font-weight: 600;
-      font-size: 1.4rem;
-      margin-top: 0.5rem;
-      color: var(--color-accent);
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 4rem auto 6rem;
-      background: rgba(31, 0, 55, 0.9);
-      border-radius: 25px;
-      padding: 4rem 4.5rem;
-      box-shadow: 0 15px 40px var(--color-secondary);
-    }
-
-    section {
-      margin-bottom: 5rem;
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-    section.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 3rem;
-      margin-bottom: 1.6rem;
-      color: var(--color-primary);
-      border-bottom: 4px solid var(--color-secondary);
-      padding-bottom: 0.5rem;
-    }
-    p, li {
-      font-size: 1.25rem;
-      line-height: 1.75;
-      color: var(--color-accent);
-      max-width: 900px;
-    }
-
-    /* Alphabet grid */
-    #alphabet-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(90px,1fr));
-      gap: 26px;
-      justify-items: center;
-    }
-    .letter {
-      background: #41133fdd;
-      border-radius: 22px;
-      padding: 15px 12px 12px;
-      box-shadow: 0 0 20px var(--color-secondary);
-      width: 90px;
-      cursor: pointer;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      text-align: center;
-      color: var(--color-accent);
-      font-weight: 700;
-      font-size: 1.9rem;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.12em;
-      position: relative;
-      user-select: none;
-    }
-    .letter:hover,
-    .letter:focus {
-      outline: none;
-      transform: scale(1.4);
-      box-shadow: 0 0 40px var(--color-primary);
-      color: #fff;
-      background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-      text-shadow: 0 0 12px #fff;
-      z-index: 2;
-    }
-    .letter-desc {
-      font-size: 0.95rem;
-      color: #e8cde6cc;
-      margin-top: 5px;
-      font-weight: 600;
-      user-select: text;
-    }
-
-    /* Grammar tabs */
-    .tab-container {
-      background: #41133fbb;
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 0 25px var(--color-primary);
-      max-width: 950px;
-      user-select: none;
-    }
-    .tabs {
-      display: flex;
-      border-bottom: 3px solid var(--color-secondary);
-      margin-bottom: 1.5rem;
-    }
-    .tab {
-      flex-grow: 1;
-      padding: 0.9rem 1.4rem;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
-      text-align: center;
-      cursor: pointer;
-      color: var(--color-primary);
-      border-bottom: 4px solid transparent;
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-    .tab.active {
-      border-bottom-color: var(--color-secondary);
-      color: var(--color-secondary);
-    }
-    .tab-content {
-      color: var(--color-accent);
-      font-size: 1.2rem;
-      line-height: 1.7;
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
-    .example {
-      font-style: italic;
-      background: var(--color-secondary);
-      padding: 0.5rem 1.2rem;
-      border-radius: 15px;
-      color: var(--color-dark);
-      margin: 1rem 0 2rem 0;
-      user-select: text;
-      max-width: 700px;
-    }
-
-    /* Table stylization */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1.5rem;
-      box-shadow: 0 8px 30px var(--color-secondary);
-      border-radius: 15px;
-      overflow: hidden;
-      user-select: none;
-    }
-    th, td {
-      padding: 16px 22px;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: var(--color-accent);
-      background: #44114fdd;
-      border-bottom: 1px solid var(--color-secondary);
-    }
-    th {
-      background: var(--color-secondary);
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-    tr:last-child td {
-      border-bottom: none;
-    }
-    tr:hover td {
-      background: var(--color-primary);
-      color: var(--color-dark);
-      font-weight: 700;
-      cursor: default;
-    }
-
-    /* Button */
-    .btn {
-      display: inline-block;
-      background: var(--color-secondary);
-      color: var(--color-dark);
-      font-weight: 700;
-      padding: 1rem 2.6rem;
-      font-size: 1.25rem;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 6px 25px var(--color-primary);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      margin-top: 1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .btn:hover {
-      background: var(--color-primary);
-      box-shadow: 0 8px 35px var(--color-secondary);
-    }
-
-    /* Responsive */
-    @media (max-width: 800px) {
-      main {
-        padding: 2rem 1.5rem;
-      }
-      header h1 {
-        font-size: 3rem;
-      }
-      #alphabet-container {
-        grid-template-columns: repeat(auto-fit,minmax(70px,1fr));
-        gap: 16px;
-      }
-      .letter {
-        font-size: 1.4rem;
-        width: 70px;
-        padding: 12px 10px 10px;
-      }
-      h2 {
-        font-size: 2.3rem;
-      }
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <div id="bg1" class="parallax-bg"></div>
-  <div id="bg2" class="parallax-bg"></div>
+<header>
+  <h1>Nalari</h1>
+  <p>Det stilfulla, avancerade språket med enkel grammatik och vackert alfabet</p>
+</header>
 
-  <header>
-    <h1>Nalari</h1>
-    <p>Det stilfulla, avancerade språket med enkel grammatik och vackert alfabet</p>
-  </header>
+<main>
 
-  <main>
+  <section id="alphabet-section">
+    <h2>Fonetik & Alfabet</h2>
+    <p>Klicka på en bokstav för att höra dess ljud och lära dig mer om uttalet.</p>
+    <div id="alphabet-container" tabindex="0">
+      <!-- Bokstäver genereras här -->
+    </div>
+  </section>
 
-    <section id="alphabet-section">
-      <h2>Fonetik & Alfabet</h2>
-      <p>Klicka på en bokstav för att höra dess ljud och lära dig mer om uttalet.</p>
-      <div id="alphabet-container">
-        <!-- Bokstäver läggs in med JS -->
-      </div>
-    </section>
+  <section id="grammar-section">
+    <h2>Grammatik</h2>
+    <div class="tabs" role="tablist" aria-label="Grammatik flikar">
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="phonetics" id="tab-phonetics" tabindex="0">Fonetik</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="grammar" id="tab-grammar" tabindex="-1">Grundläggande Grammatik</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="examples" id="tab-examples" tabindex="-1">Exempelmeningar</button>
+    </div>
+    <div id="phonetics" class="tab-content active" role="tabpanel" tabindex="0" aria-labelledby="tab-phonetics">
+      <p>Nalari har 9 konsonanter och 5 vokaler med enkel, tydlig uttalsstruktur.</p>
+      <ul>
+        <li><strong>Konsonanter:</strong> p, t, k, m, n, s, l, r</li>
+        <li><strong>Vokaler:</strong> a, e, i, o, u</li>
+        <li><strong>Uttal:</strong> Kort vokal, rullande r, och enkel konsonantkombination.</li>
+      </ul>
+    </div>
+    <div id="grammar" class="tab-content" role="tabpanel" tabindex="0" aria-labelledby="tab-grammar" hidden>
+      <p>Ordordföljd är SVO (Subjekt-Verb-Objekt). Negation sker med <code>no</code> före verbet.</p>
+      <p>Exempel:</p>
+      <ul>
+        <li>Mi lira nala. (Jag går till vatten.)</li>
+        <li>Ti no mira toma. (Du äter inte huset.)</li>
+      </ul>
+    </div>
+    <div id="examples" class="tab-content" role="tabpanel" tabindex="0" aria-labelledby="tab-examples" hidden>
+      <p>Exempelmeningar i Nalari:</p>
+      <ul>
+        <li>Mi pano mi lira fa nala. (Min vän jag går till vatten.)</li>
+        <li>Si mira sira ka toma. (Han/hon äter sover då huset.)</li>
+      </ul>
+    </div>
+  </section>
 
-    <section id="grammar-section">
-      <h2>Grammatik</h2>
-      <div class="tab-container" role="tablist" aria-label="Grammatikflikar">
-        <div class="tabs">
-          <div class="tab active" data-tab="phonetics" role="tab" tabindex="0" aria-selected="true" aria-controls="phonetics">Fonetik</div>
-          <div class="tab" data-tab="grammar" role="tab" tabindex="-1" aria-selected="false" aria-controls="grammar">Grundläggande Grammatik</div>
-          <div class="tab" data-tab="examples" role="tab" tabindex="-1" aria-selected="false" aria-controls="examples">Exempelmeningar</div>
-        </div>
-        <div class="tab-content active" id="phonetics" role="tabpanel" tabindex="0">
-          <p>Nalari har 9 konsonanter och 5 vokaler med enkel, tydlig uttalsstruktur.</p>
-          <ul>
-            <li><strong>Konsonanter:</strong> p, t, k, m, n, s, l, r</li>
-            <li><strong>Vokaler:</strong> a, e, i, o, u</li>
-            <li><strong>Uttal:</strong> Kort vokal, rullande r, och enkel konsonantkombination.</li>
-          </ul>
-        </div>
-        <div class="tab-content" id="grammar" role="tabpanel" tabindex="0" aria-hidden="true">
-          <p>Ordordföljd är SVO (Subjekt-Verb-Objekt). Negation sker med <code>no</code> före verbet.</
+</main>
+
+<script>
+  // Data för alfabetet
+  const letters = [
+    { char: 'p', desc: 'Konsonant, uttalas som p i "pappa"' },
+    { char: 't', desc: 'Konsonant, uttalas som t i "tak"' },
+    { char: 'k', desc: 'Konsonant, uttalas som k i "katt"' },
+    { char: 'm', desc: 'Konsonant, uttalas som m i "mamma"' },
+    { char: 'n', desc: 'Konsonant, uttalas som n i "näsa"' },
+    { char: 's', desc: 'Konsonant, uttalas som s i "sol"' },
+    { char: 'l', desc: 'Konsonant, uttalas som l i "lampa"' },
+    { char: 'r', desc: 'Konsonant, rullande r, som i spanska "perro"' },
+    { char: 'a', desc: 'Vokal, uttalas som a i "katt"' },
+    { char: 'e', desc: 'Vokal, uttalas som e i "lek"' },
+    { char: 'i', desc: 'Vokal, uttalas som i i "sitta"' },
+    { char: 'o', desc: 'Vokal, uttalas som o i "sol"' },
+    { char: 'u', desc: 'Vokal, uttalas som u i "full"' }
+  ];
+
+  const alphabetContainer = document.getElementById('alphabet-container');
+
+  // Skapa bokstavselement och lägg till i containern
+  letters.forEach(({ char, desc }) => {
+    const letterDiv = document.createElement('div');
+    letterDiv.className = 'letter';
+    letterDiv.setAttribute('tabindex', '0');
+    letterDiv.setAttribute('role', 'button');
+    letterDiv.setAttribute('aria-label', `${char.toUpperCase()}, ${desc}`);
+    letterDiv.innerHTML = `<div>${char.toUpperCase()}</div><div class="letter-desc">${desc}</div>`;
+    letterDiv.addEventListener('click', () => {
+      alert(`Du klickade på bokstaven ${char.toUpperCase()}. Uttal: ${desc}`);
+    });
+    letterDiv.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        letterDiv.click();
+      }
+    });
+    alphabetContainer.appendChild(letterDiv);
+  });
+
+  // Tab funktionalitet
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      activateTab(i);
+    });
+
+    tab.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        let nextIndex = (i + 1) % tabs.length;
+        tabs[nextIndex].focus();
+        activateTab(nextIndex);
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        let prevIndex = (i - 1 + tabs.length) % tabs.length;
+        tabs[prevIndex].focus();
+        activateTab(prevIndex);
+      }
+    });
+  });
+
+  function activateTab(index) {
+    tabs.forEach((tab, i) => {
+      const selected = i === index;
+      tab.classList.toggle('active', selected);
+      tab.setAttribute('aria-selected', selected);
+      tab.setAttribute('tabindex', selected ? '0' : '-1');
+
+      tabContents[i].classList.toggle('active', selected);
+      tabContents[i].hidden = !selected;
+    });
+  }
+</script>
+
+</body>
+</html>
