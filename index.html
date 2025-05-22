@@ -1,334 +1,263 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nalari – Det stilrena avancerade språket</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
-<style>
-  /* Grundläggande reset och typsnitt */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: linear-gradient(135deg, #0a192f, #1e2a47);
-    color: #e6f0ff;
-    min-height: 100vh;
-    scroll-behavior: smooth;
-  }
-  a {
-    color: #63b3ed;
-    text-decoration: none;
-    transition: color 0.25s ease;
-  }
-  a:hover, a:focus {
-    color: #a1cdf1;
-    outline: none;
-  }
-
-  /* Container maxbredd */
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem 1rem 5rem;
-  }
-
-  /* Header / Hero */
-  header {
-    text-align: center;
-    padding: 8rem 1rem 6rem;
-    background: linear-gradient(145deg, #1c3a70, #2951a3);
-    border-radius: 2rem;
-    box-shadow: 0 20px 60px rgba(40, 75, 150, 0.6);
-  }
-  header h1 {
-    font-weight: 900;
-    font-size: 4.5rem;
-    margin: 0 0 0.3rem;
-    letter-spacing: 0.1em;
-    color: #c2d6ff;
-    text-shadow: 0 0 12px #557fcc;
-  }
-  header p {
-    font-weight: 600;
-    font-size: 1.6rem;
-    max-width: 580px;
-    margin: 0 auto;
-    color: #a8bfffcc;
-  }
-
-  /* Navigation - flikar */
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.2rem;
-    margin-bottom: 3.5rem;
-    flex-wrap: wrap;
-  }
-  nav button {
-    background: transparent;
-    border: 2px solid #557fcc88;
-    border-radius: 30px;
-    padding: 0.75rem 2.5rem;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #a8bfffcc;
-    cursor: pointer;
-    transition:
-      background-color 0.35s ease,
-      color 0.35s ease,
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
-    user-select: none;
-  }
-  nav button:hover:not(.active),
-  nav button:focus:not(.active) {
-    background-color: #3e61b7cc;
-    color: #e0e9ff;
-    border-color: #7da8ff;
-    outline: none;
-  }
-  nav button.active {
-    background-color: #557fcc;
-    color: white;
-    border-color: #557fcc;
-    box-shadow:
-      0 4px 14px #557fcccc;
-    cursor: default;
-  }
-
-  /* Sektioner */
-  section {
-    display: none;
-    animation: fadeIn 0.7s ease forwards;
-  }
-  section.active {
-    display: block;
-  }
-  section h2 {
-    font-weight: 900;
-    font-size: 2.8rem;
-    color: #92aaff;
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-    text-shadow: 0 0 8px #557fccaa;
-  }
-  section p, section ul {
-    font-size: 1.15rem;
-    line-height: 1.7;
-    max-width: 720px;
-    margin-bottom: 1rem;
-    color: #c2d6ffcc;
-  }
-  section ul {
-    padding-left: 1.6rem;
-  }
-  section ul li {
-    margin-bottom: 0.7rem;
-  }
-  section code {
-    background-color: rgba(100, 140, 255, 0.2);
-    padding: 3px 7px;
-    border-radius: 6px;
-    font-family: 'Source Code Pro', monospace, monospace;
-    font-weight: 700;
-    color: #cce4ff;
-  }
-  section em {
-    font-style: normal;
-    font-weight: 700;
-    color: #a6bfff;
-  }
-
-  /* Alfabetgrid */
-  .alphabet-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(70px,1fr));
-    gap: 1.2rem;
-    margin-top: 1rem;
-    max-width: 720px;
-  }
-  .letter-card {
-    background: rgba(100, 140, 255, 0.15);
-    border-radius: 20px;
-    padding: 1.5rem 0;
-    text-align: center;
-    font-weight: 900;
-    font-size: 2.5rem;
-    color: #accdff;
-    user-select: none;
-    box-shadow: 0 8px 20px rgba(86, 125, 255, 0.4);
-    cursor: default;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .letter-card:hover,
-  .letter-card:focus {
-    transform: translateY(-7px);
-    box-shadow: 0 14px 40px rgba(86, 125, 255, 0.7);
-    outline: none;
-  }
-  .letter-desc {
-    font-weight: 400;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    color: #bcd9ff;
-    line-height: 1.3;
-    user-select: text;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    font-size: 0.9rem;
-    color: #8c9ccf99;
-    background: rgba(0, 0, 0, 0.1);
-    user-select: none;
-    margin-top: 5rem;
-  }
-
-  /* Animation */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nalari – Ditt unika språk</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* RESET & BASSTIL */
+    * {
+      box-sizing: border-box;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #3a86ff, #ffbe0b);
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-  }
-
-  /* Responsiv */
-  @media (max-width: 600px) {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* HEADER */
+    header {
+      background: rgba(255 255 255 / 0.85);
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.15);
+    }
     header h1 {
-      font-size: 3rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 3.2rem;
+      color: #3a0868;
+      margin: 0 0 0.25rem 0;
+      letter-spacing: 0.05em;
     }
     header p {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #4b3f72;
+      font-weight: 600;
     }
-    nav button {
-      flex: 1 1 100%;
-      padding: 1rem;
+    /* SPRÅKVÄLJARE */
+    #language-switcher {
+      margin-top: 1rem;
+    }
+    #language-switcher button {
+      background: #3a0868;
+      color: white;
+      border: none;
+      margin: 0 0.25rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #language-switcher button:hover,
+    #language-switcher button.active {
+      background: #ffbe0b;
+      color: #3a0868;
+    }
+    /* MAIN INNEHÅLL */
+    main {
+      flex-grow: 1;
+      padding: 2rem 1rem;
+      max-width: 960px;
+      margin: 0 auto 3rem;
+      background: rgba(255 255 255 / 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgb(0 0 0 / 0.12);
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 2.4rem;
+      color: #3a0868;
+      border-bottom: 3px solid #ffbe0b;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      max-width: max-content;
+    }
+    p {
       font-size: 1.15rem;
-      border-radius: 18px;
+      line-height: 1.6;
+      color: #444;
+      max-width: 720px;
     }
-    .alphabet-grid {
-      grid-template-columns: repeat(auto-fit,minmax(55px,1fr));
-      gap: 1rem;
+    /* Knappar */
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #3a0868;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.6rem;
+      border-radius: 30px;
+      box-shadow: 0 6px 12px rgb(58 8 104 / 0.6);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
     }
-    .letter-card {
-      font-size: 2rem;
-      padding: 1.2rem 0;
+    .btn:hover {
+      background-color: #ffbe0b;
+      color: #3a0868;
+      box-shadow: 0 6px 12px rgb(255 190 11 / 0.9);
     }
-  }
-</style>
+    /* Alfabetbilder */
+    #alphabet-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .letter {
+      text-align: center;
+      cursor: pointer;
+      width: 70px;
+      transition: transform 0.3s ease;
+    }
+    .letter img {
+      width: 70px;
+      height: 70px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(58, 8, 104, 0.25);
+      object-fit: contain;
+      background: white;
+      border: 2px solid #3a0868;
+    }
+    .letter div {
+      margin-top: 0.3rem;
+      font-weight: 700;
+      color: #3a0868;
+      font-size: 1.2rem;
+      user-select: none;
+    }
+    .letter:hover {
+      transform: scale(1.1);
+    }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(58, 8, 104, 0.1);
+      font-size: 0.9rem;
+      color: #3a0868;
+      user-select: none;
+    }
+    /* RESPONSIVT */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      main {
+        margin: 0 1rem 3rem;
+        padding: 1.5rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .letter {
+        width: 55px;
+      }
+      .letter img {
+        width: 55px;
+        height: 55px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header>
   <h1>Nalari</h1>
-  <p>Det stilrena, avancerade språket med enkel grammatik och vackert alfabet</p>
+  <p>Upptäck det unika språket Nalari – enkelt, vackert och funktionellt.</p>
+  <div id="language-switcher">
+    <button class="active" data-lang="sv">Svenska</button>
+    <button data-lang="en">English</button>
+    <button data-lang="na">Nalari</button>
+  </div>
 </header>
 
-<nav role="tablist" aria-label="Navigationsflikar">
-  <button role="tab" aria-selected="true" aria-controls="historia" id="tab-historia" class="active" tabindex="0">Historia</button>
-  <button role="tab" aria-selected="false" aria-controls="alfabet" id="tab-alfabet" tabindex="-1">Alfabet</button>
-  <button role="tab" aria-selected="false" aria-controls="grammatik" id="tab-grammatik" tabindex="-1">Grammatik</button>
-  <button role="tab" aria-selected="false" aria-controls="resurser" id="tab-resurser" tabindex="-1">Resurser</button>
-</nav>
-
-<main class="container">
-  <section id="historia" role="tabpanel" aria-labelledby="tab-historia" tabindex="0" class="active">
-    <h2>Historia</h2>
-    <p>Nalari är ett stilrent och avancerat konstruerat språk skapat med fokus på enkelhet och estetik. Med en unik kombination av tydliga ljud och enkel grammatik strävar Nalari efter att vara både vackert och funktionellt.</p>
-    <p>Språket utvecklades med inspiration från många världsspråk och skapades för att vara lättlärt, samtidigt som det erbjuder rika möjligheter att uttrycka sig nyanserat.</p>
+<main>
+  <section id="intro">
+    <h2>Välkommen till Nalari</h2>
+    <p>Nalari är ett konstruerat språk med enkel grammatik och ett vackert ljudsystem. Här kan du lära dig alfabetet, fonetiken, grammatiken och mycket mer.</p>
+    <a href="alphabet.html" class="btn">Utforska alfabetet</a>
   </section>
 
-  <section id="alfabet" role="tabpanel" aria-labelledby="tab-alfabet" tabindex="0" hidden>
-    <h2>Alfabet</h2>
-    <p>Nalari använder följande konsonanter och vokaler:</p>
-    <div class="alphabet-grid" aria-label="Nalari alfabet">
-      <!-- JavaScript genererar bokstäverna här -->
+  <section id="alphabet">
+    <h2>Fonetik & Alfabet</h2>
+    <p>Det Nalari-alfabetet består av 13 tydliga bokstäver. Klicka på bokstäverna för att höra hur de låter!</p>
+    <div id="alphabet-container">
+      <!-- Bokstäver genereras med JS -->
     </div>
   </section>
 
-  <section id="grammatik" role="tabpanel" aria-labelledby="tab-grammatik" tabindex="0" hidden>
+  <section id="grammar">
     <h2>Grammatik</h2>
-    <p>Nalari följer en enkel men tydlig grammatikstruktur som gör språket lätt att lära:</p>
-    <ul>
-      <li><strong>Ordordföljd:</strong> Subjekt – Verb – Objekt (SVO)</li>
-      <li><strong>Negation:</strong> Markerad med <code>no</code> före verbet, t.ex. <em>Mi no mira</em> (Jag äter inte)</li>
-      <li><strong>Plural:</strong> Substantiv får suffixet <code>-in</code> för plural, t.ex. <em>meto</em> → <em>metoin</em></li>
-      <li><strong>Ägande:</strong> Markeras med suffix på substantivet, t.ex. <em>pano-mi</em> (min vän)</li>
-    </ul>
-    <p>Exempelmeningar:</p>
-    <p><em>Mi lira nala.</em> – Jag går till vatten.</p>
-    <p><em>Ti no mira toma.</em> – Du äter inte huset.</p>
+    <p>Enkel SVO-ordföljd, tydliga tidsmarkörer och negation. Nalari är lätt att lära sig men ändå uttrycksfullt.</p>
+    <a href="grammar.html" class="btn">Läs mer om grammatiken</a>
   </section>
 
-  <section id="resurser" role="tabpanel" aria-labelledby="tab-resurser" tabindex="0" hidden>
-    <h2>Resurser</h2>
-    <p>Utforska mer om Nalari med dessa länkar och dokument:</p>
-    <ul>
-      <li><a href="#">Nalari ordbok (PDF)</a></li>
-      <li><a href="#">Exempelmeningar och övningar</a></li>
-      <li><a href="#">Ljudfiler för alfabetet</a></li>
-    </ul>
+  <section id="vocabulary">
+    <h2>Ordförråd</h2>
+    <p>Bygg ditt ordförråd steg för steg. Här hittar du vanliga ord och fraser på Nalari.</p>
+    <a href="vocabulary.html" class="btn">Börja lära dig ord</a>
   </section>
 </main>
 
 <footer>
-  &copy; 2025 Nalari — Alla rättigheter reserverade.
+  &copy; 2025 Nalari. Alla rättigheter förbehållna.
 </footer>
 
 <script>
-  // Tabbar: Hantera visning och fokus
-  const tabs = document.querySelectorAll('nav button');
-  const panels = document.querySelectorAll('main section');
+  // Lista med bokstäver i alfabetet och bildfilnamn
+  const alphabet = [
+    { letter: 'P', file: 'p.png' },
+    { letter: 'T', file: 't.png' },
+    { letter: 'K', file: 'k.png' },
+    { letter: 'M', file: 'm.png' },
+    { letter: 'N', file: 'n.png' },
+    { letter: 'S', file: 's.png' },
+    { letter: 'L', file: 'l.png' },
+    { letter: 'R', file: 'r.png' },
+    { letter: 'A', file: 'a.png' },
+    { letter: 'E', file: 'e.png' },
+    { letter: 'I', file: 'i.png' },
+    { letter: 'O', file: 'o.png' },
+    { letter: 'U', file: 'u.png' },
+  ];
 
-  function activateTab(index) {
-    tabs.forEach((tab, i) => {
-      const selected = i === index;
-      tab.classList.toggle('active', selected);
-      tab.setAttribute('aria-selected', selected);
-      tab.tabIndex = selected ? 0 : -1;
-      if (selected) {
-        panels[i].classList.add('active');
-        panels[i].removeAttribute('hidden');
-        panels[i].focus();
-      } else {
-        panels[i].classList.remove('active');
-        panels[i].setAttribute('hidden', '');
-      }
-    });
-  }
+  const container = document.getElementById('alphabet-container');
 
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => activateTab(i));
-    tab.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        activateTab((i + 1) % tabs.length);
-        tabs[(i + 1) % tabs.length].focus();
-      }
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        activateTab((i - 1 + tabs.length) % tabs.length);
-        tabs[(i - 1 + tabs.length) % tabs.length].focus();
-      }
-    });
-  });
+  alphabet.forEach(({ letter, file }) => {
+    const div = document.createElement('div');
+    div.classList.add('letter');
 
-  // Generera alfabetets bokstäver med beskrivning
-  const alphabetLetters = [
-    {letter: 'p', desc: 'Konsonant'},
-    {letter: 't', desc: 'Konsonant'},
-    {letter: 'k', desc: 'Konsonant'},
-    {letter: 'm', desc: 'Konsonant'},
-    {letter: 'n', desc: 'Konsonant'},
-    {letter: 's', desc: 'Konsonant'},
-    {
+    // Bilden - byt 'images/' till din sökväg för bilderna
+    const img = document.createElement('img');
+    img.src = `images/${file}`;
+    img.alt = `Bokstaven ${letter}`;
+
+    // Text under bilden
+    const text = document.createElement('div');
+    text.textContent = letter;
+
+    div.appendChild(img);
+    div.appendChild(text);
+
+    // Eventuell klickfunktion för ljud kommer här (om du lägger till ljudfiler)
+    div.addEventListener('click',
