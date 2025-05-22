@@ -19,69 +19,53 @@
       line-height: 1.6;
     }
     header {
-      background-color: #4b6cb7;
-      background-image: linear-gradient(315deg, #4b6cb7 0%, #182848 74%);
+      background: linear-gradient(315deg, #4b6cb7 0%, #182848 74%);
       color: white;
       padding: 2rem 1rem;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-weight: 700;
-      font-size: 2.8rem;
-      letter-spacing: 3px;
-    }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #cbd5e1;
-    }
+    header h1 { font-size: 2.8rem; margin: 0; letter-spacing: 3px; }
+    header p { margin-top: .5rem; font-style: italic; color: #cbd5e1; }
+
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    section.intro {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
     section.intro img {
       max-width: 100%;
-      height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       margin-top: 1rem;
     }
+
     .accordion {
-      background-color: white;
+      background: white;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       margin-bottom: 1rem;
       overflow: hidden;
     }
     .accordion-header {
-      cursor: pointer;
-      padding: 1rem 1.5rem;
-      font-weight: 600;
-      font-size: 1.2rem;
-      background-color: #4b6cb7;
-      color: white;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background: #4b6cb7;
+      color: white;
+      cursor: pointer;
       user-select: none;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s;
     }
     .accordion-header:hover {
-      background-color: #395495;
+      background: #395495;
     }
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease, padding 0.5s ease;
-      background-color: #fefefe;
       padding: 0 1.5rem;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+      background: #fefefe;
     }
     .accordion-content p,
     .accordion-content ul,
@@ -90,46 +74,42 @@
       color: #333;
     }
     .accordion-content table {
-      border-collapse: collapse;
       width: 100%;
+      border-collapse: collapse;
     }
     .accordion-content th,
     .accordion-content td {
       border: 1px solid #ddd;
-      padding: 0.5rem;
+      padding: .5rem;
       text-align: left;
     }
-    .accordion-content th {
-      background-color: #f0f4f8;
-    }
+    .accordion-content th { background: #f0f4f8; }
+
     .accordion.active .accordion-content {
       max-height: 1500px;
       padding: 1rem 1.5rem;
     }
     .accordion-header i {
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
     .accordion.active .accordion-header i {
       transform: rotate(180deg);
     }
+
     footer {
       text-align: center;
       padding: 1.5rem;
-      font-size: 0.9rem;
+      font-size: .9rem;
       color: #666;
       border-top: 1px solid #ddd;
       margin-top: 3rem;
     }
-    a {
-      color: #4b6cb7;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: #4b6cb7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Nalari</h1>
     <p>Det nya konstruerade språket – Skapat tillsammans</p>
@@ -138,187 +118,155 @@
   <main>
     <section class="intro">
       <h2>Välkommen till Nalari</h2>
-      <p>
-        Nalari är ett unikt konstruerat språk med egen fonetik, grammatik och kultur. Utforska språkets skönhet och lär dig nya sätt att uttrycka dig.
-      </p>
+      <p>Nalari är ett unikt konstruerat språk med egen fonetik, grammatik och kultur. Utforska språkets skönhet och lär dig nya sätt att uttrycka dig.</p>
       <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Naturscen som symboliserar språkets skönhet" />
     </section>
 
-    <section class="features">
-      <div class="accordion">
-        <div class="accordion-header">
-          <span>Fonetik & Grammatik</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <p><strong>Fonetik:</strong> Nalari har 9 konsonanter (p, t, k, m, n, s, l, r) och 6 vokaler (a, e, i, o, u). Rullande r är karaktäristiskt och ger språket en mjuk men tydlig klang.</p>
-          <p><strong>Grammatik:</strong> Språket följer SVO-ordföljd (Subjekt-Verb-Objekt) och använder suffix för att markera plural (-in), ägande (-mi, -ti, -si osv) och negation med 'no' före verbet.</p>
-          <p><strong>Exempel:</strong></p>
-          <ul>
-            <li><em>mi lira nala</em> – Jag går till vattnet.</li>
-            <li><em>min toma</em> – Mitt hus.</li>
-            <li><em>no mira</em> – Äter inte.</li>
-            <li><em>pano-in</em> – Vänner (plural).</li>
-          </ul>
-          <p><strong>Likheter med andra språk:</strong> Ordstrukturen påminner om engelska och svenska i sin SVO-ordföljd, medan suffixsystemet påminner om finska och turkiska, där böjningar sker med ändelser.</p>
-        </div>
+    <!-- Fonetik & Grammatik -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Fonetik & Grammatik</span>
+        <i class="fa-solid fa-chevron-down"></i>
       </div>
+      <div class="accordion-content">
+        <p><strong>Fonetik:</strong> 9 konsonanter (p,t,k,m,n,s,l,r) och 6 vokaler (a,e,i,o,u). Rullande r ger en mjuk klang.</p>
+        <p><strong>Grammatik:</strong> SVO-ordföljd; plural med –in; ägande –mi/–ti/–si; negation med ”no” före verb.</p>
+        <ul>
+          <li><em>mi lira nala</em> – Jag går till vattnet.</li>
+          <li><em>min toma</em> – Mitt hus.</li>
+          <li><em>no mira</em> – Jag äter inte.</li>
+        </ul>
+        <p><strong>Likheter:</strong> SVO som engelska/svenska; suffix lik finska/turkiska.</p>
+      </div>
+    </div>
 
-      <div class="accordion">
-        <div class="accordion-header">
-          <span>Ordförråd</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <p>Nalari bygger på ett enkelt men rikligt ordförråd som kan byggas ut efter behov. Här är några basord och deras betydelser:</p>
-          <ul>
-            <li><em>meto</em> – människa</li>
-            <li><em>nala</em> – vatten</li>
-            <li><em>toma</em> – hus</li>
-            <li><em>lira</em> – gå</li>
-            <li><em>mira</em> – äta</li>
-            <li><em>sira</em> – sova</li>
-            <li><em>pano</em> – vän</li>
-          </ul>
-          <p>Ord kan också kombineras för att skapa nya betydelser, till exempel <em>miranala</em> (äta vatten = dricka).</p>
-          <p><strong>Likheter:</strong> Ordförrådet är inspirerat av flera språk och låter ibland som en blandning av latin och indoeuropeiska språk, med ljud som är lätta att uttala för många.</p>
-        </div>
+    <!-- Ordförråd -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Ordförråd (30 ord)</span>
+        <i class="fa-solid fa-chevron-down"></i>
       </div>
+      <div class="accordion-content">
+        <table>
+          <thead><tr><th>Nalari</th><th>Svenska</th></tr></thead>
+          <tbody>
+            <tr><td>mi</td><td>jag</td></tr>
+            <tr><td>ti</td><td>du</td></tr>
+            <tr><td>si</td><td>han/hon</td></tr>
+            <tr><td>min</td><td>min/mitt</td></tr>
+            <tr><td>tin</td><td>din/ditt</td></tr>
+            <tr><td>sin</td><td>hans/hennes</td></tr>
+            <tr><td>meto</td><td>människa</td></tr>
+            <tr><td>nala</td><td>vatten</td></tr>
+            <tr><td>toma</td><td>hus</td></tr>
+            <tr><td>lira</td><td>gå</td></tr>
+            <tr><td>mira</td><td>äta</td></tr>
+            <tr><td>sira</td><td>sova</td></tr>
+            <tr><td>pano</td><td>vän</td></tr>
+            <tr><td>pano-in</td><td>vänner</td></tr>
+            <tr><td>ka</td><td>dåtid</td></tr>
+            <tr><td>sa</td><td>framtid</td></tr>
+            <tr><td>no</td><td>nej/inte</td></tr>
+            <tr><td>fa</td><td>pågående</td></tr>
+            <tr><td>du</td><td>perfekt</td></tr>
+            <tr><td>li</td><td>frågepartikel</td></tr>
+            <tr><td>miranala</td><td>dricka</td></tr>
+            <tr><td>kala</td><td>sol</td></tr>
+            <tr><td>sera</td><td>stjärna</td></tr>
+            <tr><td>luma</td><td>ljus</td></tr>
+            <tr><td>muta</td><td>ord</td></tr>
+            <tr><td>pata</td><td>fot</td></tr>
+            <tr><td>kisa</td><td>katt</td></tr>
+            <tr><td>maki</td><td>skapa</td></tr>
+            <tr><td>rila</td><td>lära</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-      <div class="accordion">
-        <div class="accordion-header">
-          <span>Gemenskap</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <p>Nalari-samhället är öppet för alla som vill delta och utveckla språket vidare. Målet är att skapa en levande gemenskap som delar texter, ordlistor och språkresurser.</p>
-          <p>Vi planerar också forum och event där användare kan öva och förbättra sina kunskaper.</p>
-          <p>Här är ett exempel på hälsningsfraser i Nalari:</p>
-          <ul>
-            <li><em>Mi pano!</em> – Jag är din vän!</li>
-            <li><em>Sira ka no?</em> – Sover du nu?</li>
-            <li><em>Sa lira ti?</em> – Ska du gå?</li>
-          </ul>
-        </div>
+    <!-- Gemenskap -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Gemenskap</span>
+        <i class="fa-solid fa-chevron-down"></i>
       </div>
+      <div class="accordion-content">
+        <p>En öppen gemenskap delar ordlistor, exempeltexter och hjälper varandra att utveckla Nalari vidare.</p>
+        <ul>
+          <li><em>Mi pano!</em> – Jag är din vän!</li>
+          <li><em>Sira ka no?</em> – Sover du nu?</li>
+          <li><em>Sa lira ti?</em> – Ska du gå?</li>
+        </ul>
+      </div>
+    </div>
 
-      <div class="accordion">
-        <div class="accordion-header">
-          <span>Historik & AI:s roll</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <p>Nalari skapades under 2025 som ett samarbete mellan en mänsklig språkentusiast och en AI, ChatGPT. Målet var att skapa ett enkelt men uttrycksfullt språk med en tydlig grammatik och melodiös fonetik.</p>
-          <p>AI:n hjälpte till med att resonera om språkliga strukturer, föreslå ord och skapa regler som är både konsekventa och lätta att lära sig. Det var en iterativ process där idéer testades, utvärderades och förbättrades tillsammans.</p>
-          <p>Resultatet blev ett språk som inte bara är funktionellt utan också vackert och flexibelt nog för att utvecklas vidare i en levande gemenskap.</p>
-        </div>
+    <!-- Historik & AI -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Historik & AI:s roll</span>
+        <i class="fa-solid fa-chevron-down"></i>
       </div>
+      <div class="accordion-content">
+        <p>Nalari skapades 2025 i samarbete mellan en människa och ChatGPT. AI föreslog ljudsystem, grammatik och ordbildningar, medan människan valde och justerade.</p>
+        <p>Genom iterativa rundor blev resultatet ett logiskt, enkelt och estetiskt tilltalande språk.</p>
+      </div>
+    </div>
 
-      <div class="accordion">
-        <div class="accordion-header">
-          <span>Ordlista (30 ord)</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <table>
-            <thead>
-              <tr><th>Nalari</th><th>Svenska</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>mi</td><td>jag</td></tr>
-              <tr><td>ti</td><td>du</td></tr>
-              <tr><td>si</td><td>han/hon/den/det</td></tr>
-              <tr><td>min</td><td>min/mitt</td></tr>
-              <tr><td>tin</td><td>din/ditt</td></tr>
-              <tr><td>sin</td><td>hans/hennes/dess</td></tr>
-              <tr><td>meto</td><td>människa</td></tr>
-              <tr><td>nala</td><td>vatten</td></tr>
-              <tr><td>toma</td><td>hus</td></tr>
-              <tr><td>lira</td><td>gå</td></tr>
-              <tr><td>mira</td><td>äta</td></tr>
-              <tr><td>sira</td><td>sova</td></tr>
-              <tr><td>pano</td><td>vän</td></tr>
-              <tr><td>pano-in</td><td>vänner</td></tr>
-              <tr><td>ka</td><td>dåtid</td></tr>
-              <tr><td>sa</td><td>framtid</td></tr>
-              <tr><td>no</td><td>nej/inte</td></tr>
-              <tr><td>fa</td><td>hjälpverb (pågående)</td></tr>
-              <tr><td>du</td><td>hjälpverb (perfekt)</td></tr>
-              <tr><td>li</td><td>frågepartikel</td></tr>
-              <tr><td>miranala</td><td>dricka (äta vatten)</td></tr>
-              <tr><td>kala</td><td>sol</td></tr>
-              <tr><td>sera</td><td>stjärna</td></tr>
-              <tr><td>luma</td><td>ljus</td></tr>
-              <tr><td>muta</td><td>ord</td></tr>
-              <tr><td>pata</td><td>fot</td></tr>
-              <tr><td>kisa</td><td>katt</td></tr>
-              <tr><td>maki</td><td>skapa</td></tr>
-              <tr><td>rila</td><td>lära</td></tr>
-              <tr><td>sani</td><td>snö</td></tr>
-              <tr><td>pata-in</td><td>fötter</td></tr>
-            </tbody>
-          </table>
-        </div>
+    <!-- Exempelmeningar -->
+    <div class="accordion">
+      <div class="accordion-header">
+        <span>Exempelmeningar (30)</span>
+        <i class="fa-solid fa-chevron-down"></i>
       </div>
+      <div class="accordion-content">
+        <ol>
+          <li>Mi lira nala. (Jag går till vattnet.)</li>
+          <li>Ti mira sira. (Du äter maten.)</li>
+          <li>Si sira ka no. (Han/hon sov inte igår.)</li>
+          <li>Min toma es stor. (Mitt hus är stort.)</li>
+          <li>Pano-in lira sa. (Vänner ska gå.)</li>
+          <li>No mira ka pala. (Jag åt inte brödet.)</li>
+          <li>Sa lira ti. (Du ska gå.)</li>
+          <li>Mi pano es trev. (Jag är vänlig.)</li>
+          <li>Ti no sira. (Du sover inte.)</li>
+          <li>Kala es luma. (Solen är ljus.)</li>
+          <li>Mi rila Nalari. (Jag lär mig Nalari.)</li>
+          <li>Ti maki toma. (Du bygger ett hus.)</li>
+          <li>Si no lira sa nala. (Han/hon kommer inte gå till vattnet.)</li>
+          <li>Mi no fa mira. (Jag äter inte nu.)</li>
+          <li>Ka sira mi. (Jag sov igår.)</li>
+          <li>Pata-in es vikt. (Fötter är viktiga.)</li>
+          <li>Kisa mira fa sira. (Katten äter medan den sover.)</li>
+          <li>Mi pano fa lira li? (Går min vän nu?)</li>
+          <li>Ti lira fa kala. (Du går i solen.)</li>
+          <li>Mi du mira. (Jag har ätit.)</li>
+          <li>Si lira nala ka. (Han/hon gick till vattnet igår.)</li>
+          <li>Mi mina pano-in. (Mina vänner.)</li>
+          <li>Ti lina tats. (Din linje är rak.)</li>
+          <li>Mi mila toma-ka. (Jag målade huset.)</li>
+          <li>Sa mira mi. (Jag ska äta.)</li>
+          <li>Ka rila ti nala. (Du lärde dig vattnets väg.)</li>
+          <li>Mi no fa sira. (Jag sover inte nu.)</li>
+          <li>Ti pata-in ka. (Dina fötter gick.)</li>
+          <li>Si pano-no. (Han/hon har inga vänner.)</li>
+        </ol>
+      </div>
+    </div>
 
-      <div class="accordion">
-        <div class="accordion-header">
-          <span>Exempelmeningar (30)</span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <ol>
-            <li>Mi lira nala. (Jag går till vattnet.)</li>
-            <li>Ti mira sira. (Du äter maten.)</li>
-            <li>Si sira ka no. (Han/hon sov inte igår.)</li>
-            <li>Min toma es stor. (Mitt hus är stort.)</li>
-            <li>Ti pano-in lira fa meto. (Dina vänner går med människan.)</li>
-            <li>No mira ka pana. (Jag åt inte brödet.)</li>
-            <li>Sa lira ti. (Du ska gå.)</li>
-            <li>Mi pano es trev. (Jag är en vän.)</li>
-            <li>Ti no sira. (Du sover inte.)</li>
-            <li>Miranala es mi fa ti. (Drick vattnet från mig till dig.)</li>
-            <li>Kala es luma ka nala. (Solen är ljus vid vattnet.)</li>
-            <li>Sani no fa es mi lira. (Snön hindrar mig från att gå.)</li>
-            <li>Pata-in es vikt. (Fötterna är viktiga.)</li>
-            <li>Kisa mira fa sira. (Katten äter medan den sover.)</li>
-            <li>Mi rila Nalari. (Jag lär mig Nalari.)</li>
-            <li>Ti maki toma. (Du bygger ett hus.)</li>
-            <li>Si no lira sa nala. (Han/hon går inte till vattnet i morgon.)</li>
-            <li>Min pano es glad. (Min vän är glad.)</li>
-            <li>Mi sira li? (Sover jag?)</li>
-            <li>Ti fa mira pano-in. (Du äter med vännerna.)</li>
-            <li>Ka sira mi no. (Jag sov inte igår.)</li>
-            <li>Sa rila ti toma. (Du ska lära dig huset.)</li>
-            <li>Mi no fa mira. (Jag äter inte nu.)</li>
-            <li>Si lira nala ka. (Han/hon gick till vattnet igår.)</li>
-            <li>Pano-in es sam. (Vännerna är många.)</li>
-            <li>Mi fa du mira. (Jag har ätit.)</li>
-            <li>Ti lira fa kala. (Du går i solen.)</li>
-            <li>Mi mira maki. (Jag äter för att skapa.)</li>
-            <li>Min toma es fin. (Mitt hus är fint.)</li>
-            <li>Mi pano fa lira li? (Går min vän nu?)</li>
-          </ol>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
-    <p>© 2025 Nalari - Skapat tillsammans med AI och människa</p>
+    <p>© 2025 Nalari – Skapat tillsammans med AI och människa</p>
   </footer>
 
   <script>
-    // Accordion expand/collapse functionality
+    // Gör alla accordion-sektioner klickbara
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', () => {
-        const accordion = header.parentElement;
-        const isActive = accordion.classList.contains('active');
+        header.parentElement.classList.toggle('active');
+      });
+    });
+  </script>
 
-        // Stäng alla andra accordions om du vill att bara en ska vara öppen samtidigt
-        // Uncomment below if needed:
-        // document.querySelectorAll('.accordion.active').forEach(acc => {
-        //   if (acc !== accordion) acc.classList.remove('active');
-        // });
-
-        if (isActive)
+</body>
+</html>
