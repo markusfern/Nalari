@@ -139,7 +139,9 @@
       position: relative;
       user-select: none;
     }
-    .letter:hover {
+    .letter:hover,
+    .letter:focus {
+      outline: none;
       transform: scale(1.4);
       box-shadow: 0 0 40px var(--color-primary);
       color: #fff;
@@ -190,6 +192,10 @@
       color: var(--color-accent);
       font-size: 1.2rem;
       line-height: 1.7;
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
     }
     .example {
       font-style: italic;
@@ -307,13 +313,13 @@
 
     <section id="grammar-section">
       <h2>Grammatik</h2>
-      <div class="tab-container">
+      <div class="tab-container" role="tablist" aria-label="Grammatikflikar">
         <div class="tabs">
-          <div class="tab active" data-tab="phonetics">Fonetik</div>
-          <div class="tab" data-tab="grammar">Grundläggande Grammatik</div>
-          <div class="tab" data-tab="examples">Exempelmeningar</div>
+          <div class="tab active" data-tab="phonetics" role="tab" tabindex="0" aria-selected="true" aria-controls="phonetics">Fonetik</div>
+          <div class="tab" data-tab="grammar" role="tab" tabindex="-1" aria-selected="false" aria-controls="grammar">Grundläggande Grammatik</div>
+          <div class="tab" data-tab="examples" role="tab" tabindex="-1" aria-selected="false" aria-controls="examples">Exempelmeningar</div>
         </div>
-        <div class="tab-content" id="phonetics">
+        <div class="tab-content active" id="phonetics" role="tabpanel" tabindex="0">
           <p>Nalari har 9 konsonanter och 5 vokaler med enkel, tydlig uttalsstruktur.</p>
           <ul>
             <li><strong>Konsonanter:</strong> p, t, k, m, n, s, l, r</li>
@@ -321,109 +327,5 @@
             <li><strong>Uttal:</strong> Kort vokal, rullande r, och enkel konsonantkombination.</li>
           </ul>
         </div>
-        <div class="tab-content" id="grammar" style="display:none;">
-          <p>Ordordföljd är SVO (Subjekt-Verb-Objekt). Negation sker med <code>no</code> före verbet.</p>
-          <table>
-            <thead>
-              <tr><th>Språkfenomen</th><th>Exempel</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Ägande (suffix)</td><td><code>meto-mi</code> (min människa), <code>toma-ti</code> (ditt hus)</td></tr>
-              <tr><td>Pluralt</td><td><code>pano-in</code> (vänner)</td></tr>
-              <tr><td>Frågeord</td><td><code>ka</code> (vad), <code>mi</code> (vem), <code>no</code> (var), <code>sa</code> (när)</td></tr>
-            </tbody>
-          </table>
-          <div class="example">"Mi lira nala." – Jag går till vatten.</div>
-        </div>
-        <div class="tab-content" id="examples" style="display:none;">
-          <p>Exempelmeningar:</p>
-          <ul>
-            <li><code>Mi mira toma.</code> – Jag äter huset. (t.ex. metaforiskt)</li>
-            <li><code>Ti no sira fa nala.</code> – Du sover inte vid vattnet.</li>
-            <li><code>Min pano lira sa tala.</code> – Mina vänner går till marknaden (framtid).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    // Parallax effect
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      document.getElementById('bg1').style.transform = `translateY(${scrollY * 0.15}px)`;
-      document.getElementById('bg2').style.transform = `translateY(${scrollY * 0.1}px)`;
-      
-      // Reveal sections on scroll
-      document.querySelectorAll('section').forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if(rect.top < window.innerHeight * 0.85) {
-          section.classList.add('visible');
-        }
-      });
-    });
-
-    // Alphabet data
-    const alphabet = [
-      {letter: 'p', desc: 'Konsonant', soundFreq: 330},
-      {letter: 't', desc: 'Konsonant', soundFreq: 440},
-      {letter: 'k', desc: 'Konsonant', soundFreq: 550},
-      {letter: 'm', desc: 'Konsonant', soundFreq: 220},
-      {letter: 'n', desc: 'Konsonant', soundFreq: 270},
-      {letter: 's', desc: 'Konsonant', soundFreq: 660},
-      {letter: 'l', desc: 'Konsonant', soundFreq: 390},
-      {letter: 'r', desc: 'Konsonant (rullande)', soundFreq: 580},
-      {letter: 'a', desc: 'Vokal', soundFreq: 450},
-      {letter: 'e', desc: 'Vokal', soundFreq: 500},
-      {letter: 'i', desc: 'Vokal', soundFreq: 600},
-      {letter: 'o', desc: 'Vokal', soundFreq: 520},
-      {letter: 'u', desc: 'Vokal', soundFreq: 560}
-    ];
-
-    const alphabetContainer = document.getElementById('alphabet-container');
-
-    alphabet.forEach(({letter, desc}) => {
-      const div = document.createElement('div');
-      div.classList.add('letter');
-      div.setAttribute('tabindex', '0');
-      div.setAttribute('aria-label', `Bokstaven ${letter}, ${desc}`);
-      div.innerHTML = `<div>${letter.toUpperCase()}</div><div class="letter-desc">${desc}</div>`;
-      alphabetContainer.appendChild(div);
-
-      // Play sound on click or keyboard enter
-      div.addEventListener('click', () => playSound(letter));
-      div.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          playSound(letter);
-        }
-      });
-    });
-
-    // Web Audio API for simple tones
-    function playSound(letter) {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = ctx.createOscillator();
-      const gainNode = ctx.createGain();
-
-      // Frequencies (just example)
-      const freqs = {
-        p: 330, t: 440, k: 550, m: 220, n: 270,
-        s: 660, l: 390, r: 580, a: 450, e: 500,
-        i: 600, o: 520, u: 560
-      };
-
-      osc.frequency.value = freqs[letter.toLowerCase()] || 440;
-      osc.type = 'sine';
-      osc.connect(gainNode);
-      gainNode.connect(ctx.destination);
-      gainNode.gain.setValueAtTime(0.15, ctx.currentTime);
-
-      osc.start();
-      osc.stop(ctx.currentTime + 0.4);
-
-      osc.onended = () => ctx.close();
-    }
-
-    // Tab switching
+        <div class="tab-content" id="grammar" role="tabpanel" tabindex="0" aria-hidden="true">
+          <p>Ordordföljd är SVO (Subjekt-Verb-Objekt). Negation sker med <code>no</code> före verbet.</
