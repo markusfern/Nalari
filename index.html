@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nalari – Det avancerade språket</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
 <style>
-  /* Reset och grund */
+  /* Reset */
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -14,142 +14,251 @@
     margin: 0; padding: 0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: #fff;
-    color: #111;
-    line-height: 1.6;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #f0f0f5;
+    min-height: 100vh;
   }
   a {
-    color: #0071e3;
+    color: #76c7ff;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   a:hover, a:focus {
-    color: #004bb5;
+    color: #a0d8ff;
     outline: none;
   }
 
-  /* Container maxbredd och padding */
+  /* Container */
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem 6rem;
   }
 
-  /* Header */
+  /* Hero section */
   header {
     text-align: center;
-    padding: 3rem 1rem 4rem;
-    border-bottom: 1px solid #eee;
+    padding: 6rem 1rem 8rem;
+    background: linear-gradient(135deg, rgba(118,199,255,0.25), rgba(44,83,100,0.1));
+    border-radius: 30px;
+    box-shadow:
+      0 8px 24px rgba(118,199,255,0.3),
+      inset 0 0 60px rgba(118,199,255,0.4);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    color: #e1f0ff;
+    margin-bottom: 4rem;
   }
   header h1 {
-    font-weight: 700;
-    font-size: 3rem;
+    font-weight: 900;
+    font-size: 4rem;
     margin-bottom: 0.3rem;
+    letter-spacing: 0.06em;
+    text-shadow:
+      0 0 5px #56aaff,
+      0 0 10px #3399ff,
+      0 0 20px #0071e3;
   }
   header p {
     font-weight: 600;
-    color: #666;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    max-width: 540px;
+    margin: 0 auto;
+    text-shadow: 0 0 8px rgba(0, 113, 227, 0.6);
   }
 
-  /* Navigationsmeny - horisontell */
+  /* Navigation (tabbar) */
   nav {
     display: flex;
     justify-content: center;
-    background: #fafafa;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 0.05);
-    border-radius: 12px;
+    gap: 1rem;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
   }
   nav button {
-    background: none;
+    background: rgba(255 255 255 / 0.1);
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #555;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #a0cfff;
     cursor: pointer;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 3px solid transparent;
+    border-radius: 18px;
+    box-shadow:
+      0 0 10px rgba(118,199,255,0.3);
+    transition:
+      background-color 0.4s ease,
+      color 0.4s ease,
+      box-shadow 0.4s ease,
+      transform 0.2s ease;
+    user-select: none;
   }
-  nav button:hover, nav button:focus {
-    color: #0071e3;
+  nav button:hover:not(.active),
+  nav button:focus:not(.active) {
+    background: rgba(118,199,255,0.3);
+    color: #e0f4ff;
+    box-shadow:
+      0 0 18px rgba(118,199,255,0.7);
     outline: none;
+    transform: translateY(-2px);
   }
   nav button.active {
-    color: #0071e3;
-    border-bottom: 3px solid #0071e3;
+    background: #0071e3;
+    color: #fff;
+    box-shadow:
+      0 0 25px #0071e3,
+      0 0 40px #3399ff;
+    cursor: default;
+    transform: translateY(-3px);
   }
 
-  /* Sektioner */
+  /* Section styles */
   section {
     display: none;
-    animation: fadeIn 0.6s ease forwards;
+    animation: fadeInUp 0.7s ease forwards;
   }
   section.active {
     display: block;
   }
+  section h2 {
+    font-weight: 900;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: #a0d8ff;
+    text-shadow: 0 0 8px #3399ff;
+    letter-spacing: 0.05em;
+  }
+  section p, section ul {
+    font-size: 1.1rem;
+    color: #d0e6ff;
+    max-width: 760px;
+    line-height: 1.7;
+  }
+  section ul {
+    padding-left: 1.6rem;
+  }
+  section ul li {
+    margin-bottom: 0.8rem;
+  }
+  section code {
+    background: rgba(255 255 255 / 0.12);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-family: 'Source Code Pro', monospace, monospace;
+    font-weight: 700;
+    color: #80caff;
+  }
+  section em {
+    font-style: normal;
+    font-weight: 700;
+    color: #cde6ff;
+  }
 
-  /* Alfabet grid */
+  /* Alphabet grid */
   .alphabet-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit,minmax(80px,1fr));
+    gap: 1.2rem;
     margin-top: 1rem;
   }
   .letter-card {
-    background: #f2f6fb;
-    border-radius: 10px;
-    padding: 1rem 0;
+    background: rgba(255 255 255 / 0.15);
+    border-radius: 16px;
+    padding: 1.6rem 0;
     text-align: center;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #0071e3;
+    font-weight: 900;
+    font-size: 2.8rem;
+    color: #cce8ff;
     user-select: none;
-    box-shadow: 0 2px 8px rgb(0 113 227 / 0.15);
-    transition: transform 0.25s ease;
-    cursor: default;
+    box-shadow:
+      0 8px 18px rgba(0, 113, 227, 0.3);
+    cursor: pointer;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.3s ease,
+      background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
-  .letter-card:hover {
-    transform: translateY(-5px);
+  .letter-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(118,199,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+  .letter-card:hover::before,
+  .letter-card:focus::before {
+    opacity: 1;
+  }
+  .letter-card:hover,
+  .letter-card:focus {
+    transform: translateY(-8px);
+    box-shadow:
+      0 12px 32px rgba(0, 113, 227, 0.7);
+    background-color: rgba(118,199,255,0.25);
+    outline: none;
+    z-index: 10;
   }
   .letter-desc {
     font-weight: 400;
-    font-size: 0.9rem;
-    margin-top: 0.3rem;
-    color: #555;
-  }
-
-  /* Listor i grammatik */
-  ul {
-    padding-left: 1.2rem;
+    font-size: 0.95rem;
     margin-top: 0.5rem;
+    color: #a0cfff;
+    line-height: 1.3;
+    user-select: text;
   }
 
-  /* Animation */
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: #739ec7;
+    background: rgba(255 255 255 / 0.05);
+    box-shadow: inset 0 1px 4px rgb(0 0 0 / 0.1);
+    user-select: none;
+    margin-top: 6rem;
   }
 
-  /* Responsivt */
+  /* Animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
   @media (max-width: 600px) {
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.8rem;
     }
-    nav {
-      flex-wrap: wrap;
+    header p {
+      font-size: 1.1rem;
     }
     nav button {
       flex: 1 1 100%;
-      border-bottom: none;
-      border-left: 3px solid transparent;
       padding: 1rem;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+      border-radius: 12px;
     }
-    nav button.active {
-      border-bottom: none;
-      border-left: 3px solid #0071e3;
+    .alphabet-grid {
+      grid-template-columns: repeat(auto-fit,minmax(60px,1fr));
+      gap: 1rem;
+    }
+    .letter-card {
+      font-size: 2rem;
+      padding: 1.2rem 0;
     }
   }
 </style>
@@ -208,6 +317,10 @@
   </section>
 </main>
 
+<footer>
+  &copy; 2025 Nalari. All rights reserved.
+</footer>
+
 <script>
   // Tabbar funktionalitet
   const tabs = document.querySelectorAll('nav button');
@@ -240,53 +353,4 @@
       const selected = i === index;
       tab.classList.toggle('active', selected);
       tab.setAttribute('aria-selected', selected);
-      tab.tabIndex = selected ? 0 : -1;
-
-      sections[i].classList.toggle('active', selected);
-      if (selected) {
-        sections[i].removeAttribute('hidden');
-      } else {
-        sections[i].setAttribute('hidden', '');
-      }
-    });
-  }
-
-  // Alfabet data
-  const letters = [
-    { char: 'p', desc: 'Konsonant, uttalas som p i "pappa"' },
-    { char: 't', desc: 'Konsonant, uttalas som t i "tak"' },
-    { char: 'k', desc: 'Konsonant, uttalas som k i "katt"' },
-    { char: 'm', desc: 'Konsonant, uttalas som m i "mamma"' },
-    { char: 'n', desc: 'Konsonant, uttalas som n i "näsa"' },
-    { char: 's', desc: 'Konsonant, uttalas som s i "sol"' },
-    { char: 'l', desc: 'Konsonant, uttalas som l i "lampa"' },
-    { char: 'r', desc: 'Konsonant, rullande r, som i spanska "perro"' },
-    { char: 'a', desc: 'Vokal, uttalas som a i "katt"' },
-    { char: 'e', desc: 'Vokal, uttalas som e i "lek"' },
-    { char: 'i', desc: 'Vokal, uttalas som i i "sitta"' },
-    { char: 'o', desc: 'Vokal, uttalas som o i "sol"' },
-    { char: 'u', desc: 'Vokal, uttalas som u i "full"' }
-  ];
-
-  // Rendera alfabetet
-  const alphabetGrid = document.querySelector('.alphabet-grid');
-  letters.forEach(({char, desc}) => {
-    const card = document.createElement('div');
-    card.className = 'letter-card';
-    card.tabIndex = 0;
-    card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', `${char.toUpperCase()}, ${desc}`);
-    card.innerHTML = `<div>${char.toUpperCase()}</div><div class="letter-desc">${desc}</div>`;
-    card.addEventListener('click', () => alert(`Bokstaven ${char.toUpperCase()}: ${desc}`));
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        card.click();
-      }
-    });
-    alphabetGrid.appendChild(card);
-  });
-</script>
-
-</body>
-</html>
+      tab.tabIndex = selected ? 
