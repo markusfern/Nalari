@@ -84,12 +84,26 @@
       padding: 0 1.5rem;
     }
     .accordion-content p,
-    .accordion-content ul {
+    .accordion-content ul,
+    .accordion-content table {
       margin: 1rem 0;
       color: #333;
     }
+    .accordion-content table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .accordion-content th,
+    .accordion-content td {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    .accordion-content th {
+      background-color: #f0f4f8;
+    }
     .accordion.active .accordion-content {
-      max-height: 800px; /* tillräckligt för innehållet */
+      max-height: 1500px;
       padding: 1rem 1.5rem;
     }
     .accordion-header i {
@@ -112,6 +126,10 @@
     }
     a:hover {
       text-decoration: underline;
+    }
+    /* Scrollbar for accordion content if needed */
+    .accordion-content {
+      overflow-y: auto;
     }
   </style>
 </head>
@@ -187,20 +205,41 @@
           </ul>
         </div>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    &copy; 2025 Markus Fern. <a href="https://markusfern.github.io/Nalari/index.html">Besök Nalari-sidan</a>
-  </footer>
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>Historik & AI:s roll</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Nalari skapades under 2025 som ett samarbete mellan en mänsklig språkentusiast och en AI, ChatGPT. Målet var att skapa ett enkelt men uttrycksfullt språk med en tydlig grammatik och melodiös fonetik.</p>
+          <p>AI:n hjälpte till med att resonera om språkliga strukturer, föreslå ord och skapa regler som är både konsekventa och lätta att lära sig. Det var en iterativ process där idéer testades, utvärderades och förbättrades tillsammans.</p>
+          <p>Resultatet blev ett språk som inte bara är funktionellt utan också vackert och flexibelt nog för att utvecklas vidare i en levande gemenskap.</p>
+        </div>
+      </div>
 
-  <script>
-    document.querySelectorAll('.accordion-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const accordion = header.parentElement;
-        accordion.classList.toggle('active');
-      });
-    });
-  </script>
-</body>
-</html>
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>Ordlista (30 ord)</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <table>
+            <thead>
+              <tr><th>Nalari</th><th>Svenska</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>mi</td><td>jag</td></tr>
+              <tr><td>ti</td><td>du</td></tr>
+              <tr><td>si</td><td>han/hon/den/det</td></tr>
+              <tr><td>min</td><td>min/mitt</td></tr>
+              <tr><td>tin</td><td>din/ditt</td></tr>
+              <tr><td>sin</td><td>hans/hennes/dess</td></tr>
+              <tr><td>meto</td><td>människa</td></tr>
+              <tr><td>nala</td><td>vatten</td></tr>
+              <tr><td>toma</td><td>hus</td></tr>
+              <tr><td>lira</td><td>gå</td></tr>
+              <tr><td>mira</td><td>äta</td></tr>
+              <tr><td>sira</td><td>sova</td></tr>
+              <tr><td>pano</td><td>vän</td></tr>
+              <tr><td>pano-in</td><td>vänner</
