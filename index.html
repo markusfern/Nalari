@@ -4,16 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nalari - Språkets hemsida</title>
-  
-  <!-- Font Awesome för ikoner -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pV4TFnNjw+Fzj+6WvVrLAGL3m17KYyOpK3+EZikksQSB3b/E7T5dELphHKxG4y3GQ1RYCVXqXrQ96M+ZXpN9wg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -57,31 +53,50 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       margin-top: 1rem;
     }
-    section.features {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 3rem;
-    }
-    .feature {
-      background: white;
+    .accordion {
+      background-color: white;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      flex: 1 1 250px;
-      max-width: 280px;
-      text-align: center;
-      transition: transform 0.2s ease;
+      margin-bottom: 1rem;
+      overflow: hidden;
     }
-    .feature:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    .accordion-header {
+      cursor: pointer;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      background-color: #4b6cb7;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      transition: background-color 0.3s ease;
     }
-    .feature i {
-      font-size: 3rem;
-      color: #4b6cb7;
-      margin-bottom: 0.8rem;
+    .accordion-header:hover {
+      background-color: #395495;
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background-color: #fefefe;
+      padding: 0 1.5rem;
+    }
+    .accordion-content p,
+    .accordion-content ul {
+      margin: 1rem 0;
+      color: #333;
+    }
+    .accordion.active .accordion-content {
+      max-height: 800px; /* tillräckligt för innehållet */
+      padding: 1rem 1.5rem;
+    }
+    .accordion-header i {
+      transition: transform 0.3s ease;
+    }
+    .accordion.active .accordion-header i {
+      transform: rotate(180deg);
     }
     footer {
       text-align: center;
@@ -116,20 +131,61 @@
     </section>
 
     <section class="features">
-      <div class="feature">
-        <i class="fa-solid fa-language"></i>
-        <h3>Fonetik & Grammatik</h3>
-        <p>Nalari har ett tydligt fonetiskt system med rullande r och sex vokaler samt enkel men rik grammatik.</p>
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>Fonetik & Grammatik</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <p><strong>Fonetik:</strong> Nalari har 9 konsonanter (p, t, k, m, n, s, l, r) och 6 vokaler (a, e, i, o, u). Rullande r är karaktäristiskt och ger språket en mjuk men tydlig klang.</p>
+          <p><strong>Grammatik:</strong> Språket följer SVO-ordföljd (Subjekt-Verb-Objekt) och använder suffix för att markera plural (-in), ägande (-mi, -ti, -si osv) och negation med 'no' före verbet.</p>
+          <p><strong>Exempel:</strong></p>
+          <ul>
+            <li><em>mi lira nala</em> – Jag går till vattnet.</li>
+            <li><em>min toma</em> – Mitt hus.</li>
+            <li><em>no mira</em> – Äter inte.</li>
+            <li><em>pano-in</em> – Vänner (plural).</li>
+          </ul>
+          <p><strong>Likheter med andra språk:</strong> Ordstrukturen påminner om engelska och svenska i sin SVO-ordföljd, medan suffixsystemet påminner om finska och turkiska, där böjningar sker med ändelser.</p>
+        </div>
       </div>
-      <div class="feature">
-        <i class="fa-solid fa-book-open"></i>
-        <h3>Ordförråd</h3>
-        <p>Utveckla och upptäck ett växande ordförråd som gör det enkelt att uttrycka komplexa idéer.</p>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>Ordförråd</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Nalari bygger på ett enkelt men rikligt ordförråd som kan byggas ut efter behov. Här är några basord och deras betydelser:</p>
+          <ul>
+            <li><em>meto</em> – människa</li>
+            <li><em>nala</em> – vatten</li>
+            <li><em>toma</em> – hus</li>
+            <li><em>lira</em> – gå</li>
+            <li><em>mira</em> – äta</li>
+            <li><em>sira</em> – sova</li>
+            <li><em>pano</em> – vän</li>
+          </ul>
+          <p>Ord kan också kombineras för att skapa nya betydelser, till exempel <em>miranala</em> (äta vatten = dricka).</p>
+          <p><strong>Likheter:</strong> Ordförrådet är inspirerat av flera språk och låter ibland som en blandning av latin och indoeuropeiska språk, med ljud som är lätta att uttala för många.</p>
+        </div>
       </div>
-      <div class="feature">
-        <i class="fa-solid fa-globe"></i>
-        <h3>Gemenskap</h3>
-        <p>Bli en del av en växande grupp språkentusiaster som lär sig och använder Nalari tillsammans.</p>
+
+      <div class="accordion">
+        <div class="accordion-header">
+          <span>Gemenskap</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="accordion-content">
+          <p>Nalari-samhället är öppet för alla som vill delta och utveckla språket vidare. Målet är att skapa en levande gemenskap som delar texter, ordlistor och språkresurser.</p>
+          <p>Vi planerar också forum och event där användare kan öva och förbättra sina kunskaper.</p>
+          <p>Här är ett exempel på hälsningsfraser i Nalari:</p>
+          <ul>
+            <li><em>Mi pano!</em> – Jag är din vän!</li>
+            <li><em>Sira ka no?</em> – Sover du nu?</li>
+            <li><em>Sa lira ti?</em> – Ska du gå?</li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
@@ -137,5 +193,12 @@
   <footer>
     &copy; 2025 Markus Fern. <a href="https://markusfern.github.io/Nalari/index.html">Besök Nalari-sidan</a>
   </footer>
-</body>
-</html>
+
+  <script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const accordion = header.parentElement;
+        accordion.classList.toggle('active');
+      });
+    });
+  </
