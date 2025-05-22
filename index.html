@@ -198,6 +198,12 @@
     <a href="alphabet.html" class="btn">Utforska alfabetet</a>
   </section>
 
+  <section id="creation">
+    <h2>Hur Nalari skapades</h2>
+    <p>Nalari skapades år 2025 av en entusiastisk språkbyggare med målet att designa ett språk som var både lätt att lära och vackert att tala. Språket utvecklades under flera månader med fokus på enkelhet, klarhet och musikalitet.</p>
+    <p>Syftet med Nalari är att erbjuda ett konstruerat språk som kan användas för kreativt berättande, konstnärliga projekt och som ett språk för gemenskap där reglerna är tydliga men uttrycksfulla. Inspiration hämtades från naturliga språk, men med en förenklad grammatik och noggrant valda fonem för att skapa en harmonisk ljudbild.</p>
+  </section>
+
   <section id="alphabet">
     <h2>Fonetik & Alfabet</h2>
     <p>Det Nalari-alfabetet består av 13 tydliga bokstäver. Klicka på bokstäverna för att höra hur de låter!</p>
@@ -224,7 +230,6 @@
 </footer>
 
 <script>
-  // Lista med bokstäver i alfabetet och bildfilnamn
   const alphabet = [
     { letter: 'P', file: 'p.png' },
     { letter: 'T', file: 't.png' },
@@ -247,17 +252,26 @@
     const div = document.createElement('div');
     div.classList.add('letter');
 
-    // Bilden - byt 'images/' till din sökväg för bilderna
     const img = document.createElement('img');
     img.src = `images/${file}`;
     img.alt = `Bokstaven ${letter}`;
 
-    // Text under bilden
     const text = document.createElement('div');
     text.textContent = letter;
 
     div.appendChild(img);
     div.appendChild(text);
 
-    // Eventuell klickfunktion för ljud kommer här (om du lägger till ljudfiler)
-    div.addEventListener('click',
+    // Klickfunktion för ljud kan läggas till här
+    div.addEventListener('click', () => {
+      // Exempel: spela upp ljudfil kopplad till bokstaven om du lägger till ljudfiler
+      // const audio = new Audio(`sounds/${letter.toLowerCase()}.mp3`);
+      // audio.play();
+    });
+
+    container.appendChild(div);
+  });
+</script>
+
+</body>
+</html>
