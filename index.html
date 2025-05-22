@@ -3,248 +3,290 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nalari – Det magiska språket</title>
+  <title>Nalari – Ditt unika språk</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
+  
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; max-width: 900px; }
-    header, footer { text-align: center; margin-bottom: 2rem; }
-    nav ul { list-style: none; padding: 0; display: flex; gap: 1rem; justify-content: center; }
-    nav ul li { display: inline; }
-    nav ul li a { text-decoration: none; color: #007acc; }
-    section { margin-bottom: 2rem; }
-    label { font-weight: bold; margin-right: 0.5rem; }
-    select { padding: 0.3rem; font-size: 1rem; }
-    .example-sentence { cursor: pointer; color: #006600; }
-    .example-sentence:hover { text-decoration: underline; }
+    /* RESET & BASSTIL */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #3a86ff, #ffbe0b);
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* HEADER */
+    header {
+      background: rgba(255 255 255 / 0.85);
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.15);
+    }
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 3.2rem;
+      color: #3a0868;
+      margin: 0 0 0.25rem 0;
+      letter-spacing: 0.05em;
+    }
+    header p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #4b3f72;
+      font-weight: 600;
+    }
+    /* SPRÅKVÄLJARE */
+    #language-switcher {
+      margin-top: 1rem;
+    }
+    #language-switcher button {
+      background: #3a0868;
+      color: white;
+      border: none;
+      margin: 0 0.25rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #language-switcher button:hover,
+    #language-switcher button.active {
+      background: #ffbe0b;
+      color: #3a0868;
+    }
+    /* MAIN INNEHÅLL */
+    main {
+      flex-grow: 1;
+      padding: 2rem 1rem;
+      max-width: 960px;
+      margin: 0 auto 3rem;
+      background: rgba(255 255 255 / 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgb(0 0 0 / 0.12);
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 2.4rem;
+      color: #3a0868;
+      border-bottom: 3px solid #ffbe0b;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      max-width: max-content;
+    }
+    p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #444;
+      max-width: 720px;
+    }
+    /* Knappar */
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #3a0868;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.6rem;
+      border-radius: 30px;
+      box-shadow: 0 6px 12px rgb(58 8 104 / 0.6);
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #ffbe0b;
+      color: #3a0868;
+      box-shadow: 0 6px 12px rgb(255 190 11 / 0.9);
+    }
+    /* Alfabetbilder */
+    #alphabet-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .letter {
+      text-align: center;
+      cursor: pointer;
+      width: 70px;
+      transition: transform 0.3s ease;
+    }
+    .letter img {
+      width: 70px;
+      height: 70px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(58, 8, 104, 0.25);
+      object-fit: contain;
+      background: white;
+      border: 2px solid #3a0868;
+    }
+    .letter div {
+      margin-top: 0.3rem;
+      font-weight: 700;
+      color: #3a0868;
+      font-size: 1.2rem;
+      user-select: none;
+    }
+    .letter:hover {
+      transform: scale(1.1);
+    }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(58, 8, 104, 0.1);
+      font-size: 0.9rem;
+      color: #3a0868;
+      user-select: none;
+    }
+    /* RESPONSIVT */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      main {
+        margin: 0 1rem 3rem;
+        padding: 1.5rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .letter {
+        width: 55px;
+      }
+      .letter img {
+        width: 55px;
+        height: 55px;
+      }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1 id="title">Nalari – Det magiska språket</h1>
-  <label for="language-select">Välj språk:</label>
-  <select id="language-select" aria-label="Välj språk">
-    <option value="sv" selected>Svenska</option>
-    <option value="en">English</option>
-  </select>
+  <h1>Nalari</h1>
+  <p>Upptäck det unika språket Nalari – enkelt, vackert och funktionellt.</p>
+  <div id="language-switcher">
+    <button class="active" data-lang="sv">Svenska</button>
+    <button data-lang="en">English</button>
+    <button data-lang="na">Nalari</button>
+  </div>
 </header>
 
-<nav>
-  <ul id="nav-list">
-    <li><a href="#home">Hem</a></li>
-    <li><a href="#history">Historia</a></li>
-    <li><a href="#phonetics">Fonetik & Alfabet</a></li>
-    <li><a href="#grammar">Grammatik</a></li>
-    <li><a href="#lexicon">Lexikon</a></li>
-    <li><a href="#interactive">Interaktivt</a></li>
-    <li><a href="#community">Community</a></li>
-    <li><a href="#news">Nyheter</a></li>
-    <li><a href="#contact">Kontakt</a></li>
-  </ul>
-</nav>
-
 <main>
-  <section id="home">
-    <h2 id="home-title">Välkommen till Nalari!</h2>
-    <p id="home-text">Nalari är ett unikt konstruerat språk skapat för att fånga magin i enkelhet och naturlighet. Här kan du utforska dess alfabet, grammatik, och börja tala Nalari med vårt interaktiva material.</p>
+  <section id="intro">
+    <h2>Välkommen till Nalari</h2>
+    <p>Nalari är ett konstruerat språk med enkel grammatik och ett vackert ljudsystem. Här kan du lära dig alfabetet, fonetiken, grammatiken och mycket mer.</p>
+    <a href="#alphabet" class="btn">Utforska alfabetet</a>
   </section>
 
-  <section id="history">
-    <h2 id="history-title">Historia</h2>
-    <p id="history-text">Nalari skapades med inspiration från naturliga ljud och enkel grammatik för att vara lätt att lära men ändå rik på uttryck.</p>
-    <ul id="history-list">
-      <li>2025-05: Språket Nalari lanserades officiellt.</li>
-      <li>2025-06: Första versionen av lexikon och grammatik publicerades.</li>
-    </ul>
-  </section>
-
-  <section id="phonetics">
-    <h2 id="phonetics-title">Fonetik & Alfabet</h2>
-    <p id="phonetics-text">Här är Nalari-alfabetet med dess unika ljud. Klicka på en bokstav för att höra dess uttal.</p>
+  <section id="alphabet">
+    <h2>Fonetik & Alfabet</h2>
+    <p>Det Nalari-alfabetet består av 13 tydliga bokstäver. Klicka på bokstäverna för att höra hur de låter!</p>
+    <div id="alphabet-container">
+      <!-- Bokstäver genereras med JS -->
+    </div>
   </section>
 
   <section id="grammar">
-    <h2 id="grammar-title">Grammatik</h2>
-    <p id="grammar-intro">Nalari har enkel SVO-ordföljd och några unika grammatikregler:</p>
-    <ul id="grammar-list">
-      <li>Plural bildas med suffixet -in.</li>
-      <li>Negation sker med no före verbet.</li>
-      <li>Tidsmarkörer: ka (dåtid), sa (framtid).</li>
-      <li>Ägande markeras med suffix på substantiv.</li>
-    </ul>
-    <p id="grammar-examples-intro">Klicka på meningarna för att se översättning och grammatikförklaring:</p>
-    <ul>
-      <li class="example-sentence" data-translation="Jag går hem.">Mi lira toma.</li>
-      <li class="example-sentence" data-translation="Du äter vatten.">Ti mira nala.</li>
-      <li class="example-sentence" data-translation="Vi sover nu.">Min sira ka.</li>
-    </ul>
+    <h2>Grammatik</h2>
+    <p>Enkel SVO-ordföljd, tydliga tidsmarkörer och negation. Nalari är lätt att lära sig men ändå uttrycksfullt.</p>
+    <a href="#grammar" class="btn">Läs mer om grammatiken</a>
   </section>
 
-  <section id="lexicon">
-    <h2 id="lexicon-title">Lexikon</h2>
-    <input type="search" id="lexicon-search" placeholder="Sök ord i Nalari..." />
-  </section>
-
-  <section id="interactive">
-    <h2 id="interactive-title">Interaktivt</h2>
-    <p id="interactive-text">Testa dina kunskaper med quiz och flashcards! (Kommande funktioner...)</p>
-  </section>
-
-  <section id="community">
-    <h2 id="community-title">Community</h2>
-    <p id="community-text">Gå med i vår diskussionsgrupp, dela meningar och idéer med andra som älskar Nalari.</p>
-  </section>
-
-  <section id="news">
-    <h2 id="news-title">Nyheter</h2>
-    <p id="news-text">Senaste uppdateringar och nya resurser publiceras här.</p>
-  </section>
-
-  <section id="contact">
-    <h2 id="contact-title">Kontakt</h2>
-    <p id="contact-text">Har du frågor eller vill bidra? Skicka gärna ett meddelande!</p>
-    <form id="contact-form">
-      <label for="name" id="label-name">Namn:</label><br/>
-      <input type="text" id="name" name="name" required /><br/><br/>
-      
-      <label for="email" id="label-email">E-post:</label><br/>
-      <input type="email" id="email" name="email" required /><br/><br/>
-      
-      <label for="message" id="label-message">Meddelande:</label><br/>
-      <textarea id="message" name="message" rows="4" required></textarea><br/><br/>
-      
-      <button type="submit" id="send-button">Skicka</button>
-    </form>
+  <section id="vocabulary">
+    <h2>Ordförråd</h2>
+    <p>Bygg ditt ordförråd steg för steg. Här hittar du vanliga ord och fraser på Nalari.</p>
+    <a href="#vocabulary" class="btn">Börja lära dig ord</a>
   </section>
 </main>
 
 <footer>
-  <p id="footer-text">© 2025 Nalari – Skapat med magi och kärlek.</p>
+  &copy; 2025 Nalari. Alla rättigheter förbehållna.
 </footer>
 
 <script>
-const texts = {
-  sv: {
-    title: "Nalari – Det magiska språket",
-    nav: ["Hem", "Historia", "Fonetik & Alfabet", "Grammatik", "Lexikon", "Interaktivt", "Community", "Nyheter", "Kontakt"],
-    home_title: "Välkommen till Nalari!",
-    home_text: "Nalari är ett unikt konstruerat språk skapat för att fånga magin i enkelhet och naturlighet. Här kan du utforska dess alfabet, grammatik, och börja tala Nalari med vårt interaktiva material.",
-    history_title: "Historia",
-    history_text: "Nalari skapades med inspiration från naturliga ljud och enkel grammatik för att vara lätt att lära men ändå rik på uttryck.",
-    history_list: [
-      "2025-05: Språket Nalari lanserades officiellt.",
-      "2025-06: Första versionen av lexikon och grammatik publicerades."
-    ],
-    phonetics_title: "Fonetik & Alfabet",
-    phonetics_text: "Här är Nalari-alfabetet med dess unika ljud. Klicka på en bokstav för att höra dess uttal.",
-    grammar_title: "Grammatik",
-    grammar_intro: "Nalari har enkel SVO-ordföljd och några unika grammatikregler:",
-    grammar_list: [
-      "Plural bildas med suffixet -in.",
-      "Negation sker med no före verbet.",
-      "Tidsmarkörer: ka (dåtid), sa (framtid).",
-      "Ägande markeras med suffix på substantiv."
-    ],
-    grammar_examples_intro: "Klicka på meningarna för att se översättning och grammatikförklaring:",
-    grammar_examples: [
-      { sentence: "Mi lira toma.", translation: "Jag går hem." },
-      { sentence: "Ti mira nala.", translation: "Du äter vatten." },
-      { sentence: "Min sira ka.", translation: "Vi sover nu." }
-    ],
-    lexicon_title: "Lexikon",
-    lexicon_placeholder: "Sök ord i Nalari...",
-    interactive_title: "Interaktivt",
-    interactive_text: "Testa dina kunskaper med quiz och flashcards! (Kommande funktioner...)",
-    community_title: "Community",
-    community_text: "Gå med i vår diskussionsgrupp, dela meningar och idéer med andra som älskar Nalari.",
-    news_title: "Nyheter",
-    news_text: "Senaste uppdateringar och nya resurser publiceras här.",
-    contact_title: "Kontakt",
-    contact_text: "Har du frågor eller vill bidra? Skicka gärna ett meddelande!",
-    contact_labels: {
-      name: "Namn:",
-      email: "E-post:",
-      message: "Meddelande:",
-      send: "Skicka"
-    },
-    footer_text: "© 2025 Nalari – Skapat med magi och kärlek.",
-    alert_message: "Tack för ditt meddelande! (detta är bara en demo)"
-  },
-  en: {
-    title: "Nalari – The Magical Language",
-    nav: ["Home", "History", "Phonetics & Alphabet", "Grammar", "Lexicon", "Interactive", "Community", "News", "Contact"],
-    home_title: "Welcome to Nalari!",
-    home_text: "Nalari is a unique constructed language designed to capture magic in simplicity and naturalness. Here you can explore its alphabet, grammar, and start speaking Nalari with our interactive materials.",
-    history_title: "History",
-    history_text: "Nalari was created inspired by natural sounds and simple grammar to be easy to learn yet rich in expression.",
-    history_list: [
-      "May 2025: The Nalari language was officially launched.",
-      "June 2025: First version of the lexicon and grammar published."
-    ],
-    phonetics_title: "Phonetics & Alphabet",
-    phonetics_text: "Here is the Nalari alphabet with its unique sounds. Click on a letter to hear its pronunciation.",
-    grammar_title: "Grammar",
-    grammar_intro: "Nalari has a simple SVO word order and some unique grammar rules:",
-    grammar_list: [
-      "Plural is formed with the suffix -in.",
-      "Negation is done with no before the verb.",
-      "Tense markers: ka (past), sa (future).",
-      "Possession is marked with suffixes on nouns."
-    ],
-    grammar_examples_intro: "Click the sentences to see the translation and grammar explanation:",
-    grammar_examples: [
-      { sentence: "Mi lira toma.", translation: "I go home." },
-      { sentence: "Ti mira nala.", translation: "You eat water." },
-      { sentence: "Min sira ka.", translation: "We sleep now." }
-    ],
-    lexicon_title: "Lexicon",
-    lexicon_placeholder: "Search words in Nalari...",
-    interactive_title: "Interactive",
-    interactive_text: "Test your skills with quizzes and flashcards! (Coming soon...)",
-    community_title: "Community",
-    community_text: "Join our discussion group, share sentences and ideas with others who love Nalari.",
-    news_title: "News",
-    news_text: "Latest updates and new resources are published here.",
-    contact_title: "Contact",
-    contact_text: "Do you have questions or want to contribute? Please send a message!",
-    contact_labels: {
-      name: "Name:",
-      email: "Email:",
-      message: "Message:",
-      send: "Send"
-    },
-    footer_text: "© 2025 Nalari – Created with magic and love.",
-    alert_message: "Thank you for your message! (this is just a demo)"
-  }
-};
+  // Lista med bokstäver i alfabetet och bildfilnamn
+  const alphabet = [
+    { letter: 'P', file: 'p.png' },
+    { letter: 'T', file: 't.png' },
+    { letter: 'K', file: 'k.png' },
+    { letter: 'M', file: 'm.png' },
+    { letter: 'N', file: 'n.png' },
+    { letter: 'S', file: 's.png' },
+    { letter: 'L', file: 'l.png' },
+    { letter: 'R', file: 'r.png' },
+    { letter: 'A', file: 'a.png' },
+    { letter: 'E', file: 'e.png' },
+    { letter: 'I', file: 'i.png' },
+    { letter: 'O', file: 'o.png' },
+    { letter: 'U', file: 'u.png' },
+  ];
 
-function updateLanguage(lang) {
-  document.title = texts[lang].title;
-  document.getElementById('title').textContent = texts[lang].title;
+  const container = document.getElementById('alphabet-container');
 
-  // Nav
-  const navItems = document.querySelectorAll('#nav-list li a');
-  navItems.forEach((a, i) => a.textContent = texts[lang].nav[i]);
+  alphabet.forEach(({ letter, file }) => {
+    const div = document.createElement('div');
+    div.classList.add('letter');
 
-  // Home
-  document.getElementById('home-title').textContent = texts[lang].home_title;
-  document.getElementById('home-text').textContent = texts[lang].home_text;
+    // Bilden - byt 'images/' till din sökväg för bilderna
+    const img = document.createElement('img');
+    img.src = `images/${file}`;
+    img.alt = `Bokstaven ${letter}`;
 
-  // History
-  document.getElementById('history-title').textContent = texts[lang].history_title;
-  document.getElementById('history-text').textContent = texts[lang].history_text;
+    // Text under bilden
+    const text = document.createElement('div');
+    text.textContent = letter;
 
-  const historyList = document.getElementById('history-list');
-  historyList.innerHTML = '';
-  texts[lang].history_list.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = item;
-    historyList.appendChild(li);
+    div.appendChild(img);
+    div.appendChild(text);
+
+    // Eventuell klickfunktion för ljud kommer här (om du lägger till ljudfiler)
+    div.addEventListener('click', () => {
+      alert(`Här kan du lägga till ljud för bokstaven ${letter}`);
+    });
+
+    container.appendChild(div);
   });
 
-  // Phonetics
-  document.getElementById('phonetics-title').textContent = texts[lang].phonetics_title;
-  document.getElementById('phonetics-text').textContent = texts[lang].phonetics_text;
+  // Språkknappar - enkel demo för språkbyte (ändra text på sidan)
+  const buttons = document.querySelectorAll('#language-switcher button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const lang = btn.dataset.lang;
 
-  // Grammar
-  document.getElementById('grammar-title').textContent = texts[lang].grammar_title;
-  document.getElementById('grammar-intro').textContent = texts[lang
+      // Demo: byt bara introtekst - du kan utöka med riktig översättning
+      const intro = document.querySelector('#intro p');
+      if(lang === 'sv') {
+        intro.textContent = 'Nalari är ett konstruerat språk med enkel grammatik och ett vackert ljudsystem. Här kan du lära dig alfabetet, fonetiken, grammatiken och mycket mer.';
+      } else if(lang === 'en') {
+        intro.textContent = 'Nalari is a constructed language with simple grammar and a beautiful sound system. Here you can learn the alphabet, phonetics, grammar, and much more.';
+      } else if(lang === 'na') {
+        intro.textContent = 'Nalari mi nala to meto ka mira sa toma min rira; mi fa lira meto, fonetik, grammatika, lira toti.';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
