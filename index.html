@@ -2,40 +2,249 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <title>Nalari - Ett konstruerat språk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nalari – Det magiska språket</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; background: #f9f9f9; color: #333; }
-    header { text-align: center; }
-    h1 { color: #2a7ae2; }
-    section { margin-top: 30px; }
-    footer { text-align: center; margin-top: 50px; font-size: 0.9em; color: #666; }
+    body { font-family: Arial, sans-serif; margin: 20px; max-width: 900px; }
+    header, footer { text-align: center; margin-bottom: 2rem; }
+    nav ul { list-style: none; padding: 0; display: flex; gap: 1rem; justify-content: center; }
+    nav ul li { display: inline; }
+    nav ul li a { text-decoration: none; color: #007acc; }
+    section { margin-bottom: 2rem; }
+    label { font-weight: bold; margin-right: 0.5rem; }
+    select { padding: 0.3rem; font-size: 1rem; }
+    .example-sentence { cursor: pointer; color: #006600; }
+    .example-sentence:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Nalari</h1>
-    <p>Ett konstruerat språk skapat av Per Markus Fernström och ChatGPT</p>
-  </header>
-  <section>
-    <h2>Om Nalari</h2>
-    <p>Nalari är ett konstruerat språk med enkel grammatik och eget alfabet. Det innehåller en unik fonetik, ordförråd och tidsmarkörer, och är designat för att vara lätt att lära.</p>
+
+<header>
+  <h1 id="title">Nalari – Det magiska språket</h1>
+  <label for="language-select">Välj språk:</label>
+  <select id="language-select" aria-label="Välj språk">
+    <option value="sv" selected>Svenska</option>
+    <option value="en">English</option>
+  </select>
+</header>
+
+<nav>
+  <ul id="nav-list">
+    <li><a href="#home">Hem</a></li>
+    <li><a href="#history">Historia</a></li>
+    <li><a href="#phonetics">Fonetik & Alfabet</a></li>
+    <li><a href="#grammar">Grammatik</a></li>
+    <li><a href="#lexicon">Lexikon</a></li>
+    <li><a href="#interactive">Interaktivt</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#news">Nyheter</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="home">
+    <h2 id="home-title">Välkommen till Nalari!</h2>
+    <p id="home-text">Nalari är ett unikt konstruerat språk skapat för att fånga magin i enkelhet och naturlighet. Här kan du utforska dess alfabet, grammatik, och börja tala Nalari med vårt interaktiva material.</p>
   </section>
-  <section>
-    <h2>Grammatik och fonetik</h2>
-    <ul>
-      <li>Fonetik: p, t, k, m, n, s, l, r + vokaler a, e, i, o, u</li>
-      <li>Ordföljd: subjekt-verb-objekt (SVO)</li>
-      <li>Tidsmarkörer: ka (dåtid), sa (framtid)</li>
-      <li>Hjälpverb: fa (pågående), du (perfekt)</li>
+
+  <section id="history">
+    <h2 id="history-title">Historia</h2>
+    <p id="history-text">Nalari skapades med inspiration från naturliga ljud och enkel grammatik för att vara lätt att lära men ändå rik på uttryck.</p>
+    <ul id="history-list">
+      <li>2025-05: Språket Nalari lanserades officiellt.</li>
+      <li>2025-06: Första versionen av lexikon och grammatik publicerades.</li>
     </ul>
   </section>
-  <section>
-    <h2>Exempel</h2>
-    <p><strong>Mi fa lira nala.</strong> — Jag håller på att gå till vatten.</p>
-    <p><strong>Ti du mira pano.</strong> — Du har ätit med vän.</p>
+
+  <section id="phonetics">
+    <h2 id="phonetics-title">Fonetik & Alfabet</h2>
+    <p id="phonetics-text">Här är Nalari-alfabetet med dess unika ljud. Klicka på en bokstav för att höra dess uttal.</p>
   </section>
-  <footer>
-    <p>© 2025 Per Markus Fernström</p>
-  </footer>
-</body>
-</html>
+
+  <section id="grammar">
+    <h2 id="grammar-title">Grammatik</h2>
+    <p id="grammar-intro">Nalari har enkel SVO-ordföljd och några unika grammatikregler:</p>
+    <ul id="grammar-list">
+      <li>Plural bildas med suffixet -in.</li>
+      <li>Negation sker med no före verbet.</li>
+      <li>Tidsmarkörer: ka (dåtid), sa (framtid).</li>
+      <li>Ägande markeras med suffix på substantiv.</li>
+    </ul>
+    <p id="grammar-examples-intro">Klicka på meningarna för att se översättning och grammatikförklaring:</p>
+    <ul>
+      <li class="example-sentence" data-translation="Jag går hem.">Mi lira toma.</li>
+      <li class="example-sentence" data-translation="Du äter vatten.">Ti mira nala.</li>
+      <li class="example-sentence" data-translation="Vi sover nu.">Min sira ka.</li>
+    </ul>
+  </section>
+
+  <section id="lexicon">
+    <h2 id="lexicon-title">Lexikon</h2>
+    <input type="search" id="lexicon-search" placeholder="Sök ord i Nalari..." />
+  </section>
+
+  <section id="interactive">
+    <h2 id="interactive-title">Interaktivt</h2>
+    <p id="interactive-text">Testa dina kunskaper med quiz och flashcards! (Kommande funktioner...)</p>
+  </section>
+
+  <section id="community">
+    <h2 id="community-title">Community</h2>
+    <p id="community-text">Gå med i vår diskussionsgrupp, dela meningar och idéer med andra som älskar Nalari.</p>
+  </section>
+
+  <section id="news">
+    <h2 id="news-title">Nyheter</h2>
+    <p id="news-text">Senaste uppdateringar och nya resurser publiceras här.</p>
+  </section>
+
+  <section id="contact">
+    <h2 id="contact-title">Kontakt</h2>
+    <p id="contact-text">Har du frågor eller vill bidra? Skicka gärna ett meddelande!</p>
+    <form id="contact-form">
+      <label for="name" id="label-name">Namn:</label><br/>
+      <input type="text" id="name" name="name" required /><br/><br/>
+      
+      <label for="email" id="label-email">E-post:</label><br/>
+      <input type="email" id="email" name="email" required /><br/><br/>
+      
+      <label for="message" id="label-message">Meddelande:</label><br/>
+      <textarea id="message" name="message" rows="4" required></textarea><br/><br/>
+      
+      <button type="submit" id="send-button">Skicka</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p id="footer-text">© 2025 Nalari – Skapat med magi och kärlek.</p>
+</footer>
+
+<script>
+const texts = {
+  sv: {
+    title: "Nalari – Det magiska språket",
+    nav: ["Hem", "Historia", "Fonetik & Alfabet", "Grammatik", "Lexikon", "Interaktivt", "Community", "Nyheter", "Kontakt"],
+    home_title: "Välkommen till Nalari!",
+    home_text: "Nalari är ett unikt konstruerat språk skapat för att fånga magin i enkelhet och naturlighet. Här kan du utforska dess alfabet, grammatik, och börja tala Nalari med vårt interaktiva material.",
+    history_title: "Historia",
+    history_text: "Nalari skapades med inspiration från naturliga ljud och enkel grammatik för att vara lätt att lära men ändå rik på uttryck.",
+    history_list: [
+      "2025-05: Språket Nalari lanserades officiellt.",
+      "2025-06: Första versionen av lexikon och grammatik publicerades."
+    ],
+    phonetics_title: "Fonetik & Alfabet",
+    phonetics_text: "Här är Nalari-alfabetet med dess unika ljud. Klicka på en bokstav för att höra dess uttal.",
+    grammar_title: "Grammatik",
+    grammar_intro: "Nalari har enkel SVO-ordföljd och några unika grammatikregler:",
+    grammar_list: [
+      "Plural bildas med suffixet -in.",
+      "Negation sker med no före verbet.",
+      "Tidsmarkörer: ka (dåtid), sa (framtid).",
+      "Ägande markeras med suffix på substantiv."
+    ],
+    grammar_examples_intro: "Klicka på meningarna för att se översättning och grammatikförklaring:",
+    grammar_examples: [
+      { sentence: "Mi lira toma.", translation: "Jag går hem." },
+      { sentence: "Ti mira nala.", translation: "Du äter vatten." },
+      { sentence: "Min sira ka.", translation: "Vi sover nu." }
+    ],
+    lexicon_title: "Lexikon",
+    lexicon_placeholder: "Sök ord i Nalari...",
+    interactive_title: "Interaktivt",
+    interactive_text: "Testa dina kunskaper med quiz och flashcards! (Kommande funktioner...)",
+    community_title: "Community",
+    community_text: "Gå med i vår diskussionsgrupp, dela meningar och idéer med andra som älskar Nalari.",
+    news_title: "Nyheter",
+    news_text: "Senaste uppdateringar och nya resurser publiceras här.",
+    contact_title: "Kontakt",
+    contact_text: "Har du frågor eller vill bidra? Skicka gärna ett meddelande!",
+    contact_labels: {
+      name: "Namn:",
+      email: "E-post:",
+      message: "Meddelande:",
+      send: "Skicka"
+    },
+    footer_text: "© 2025 Nalari – Skapat med magi och kärlek.",
+    alert_message: "Tack för ditt meddelande! (detta är bara en demo)"
+  },
+  en: {
+    title: "Nalari – The Magical Language",
+    nav: ["Home", "History", "Phonetics & Alphabet", "Grammar", "Lexicon", "Interactive", "Community", "News", "Contact"],
+    home_title: "Welcome to Nalari!",
+    home_text: "Nalari is a unique constructed language designed to capture magic in simplicity and naturalness. Here you can explore its alphabet, grammar, and start speaking Nalari with our interactive materials.",
+    history_title: "History",
+    history_text: "Nalari was created inspired by natural sounds and simple grammar to be easy to learn yet rich in expression.",
+    history_list: [
+      "May 2025: The Nalari language was officially launched.",
+      "June 2025: First version of the lexicon and grammar published."
+    ],
+    phonetics_title: "Phonetics & Alphabet",
+    phonetics_text: "Here is the Nalari alphabet with its unique sounds. Click on a letter to hear its pronunciation.",
+    grammar_title: "Grammar",
+    grammar_intro: "Nalari has a simple SVO word order and some unique grammar rules:",
+    grammar_list: [
+      "Plural is formed with the suffix -in.",
+      "Negation is done with no before the verb.",
+      "Tense markers: ka (past), sa (future).",
+      "Possession is marked with suffixes on nouns."
+    ],
+    grammar_examples_intro: "Click the sentences to see the translation and grammar explanation:",
+    grammar_examples: [
+      { sentence: "Mi lira toma.", translation: "I go home." },
+      { sentence: "Ti mira nala.", translation: "You eat water." },
+      { sentence: "Min sira ka.", translation: "We sleep now." }
+    ],
+    lexicon_title: "Lexicon",
+    lexicon_placeholder: "Search words in Nalari...",
+    interactive_title: "Interactive",
+    interactive_text: "Test your skills with quizzes and flashcards! (Coming soon...)",
+    community_title: "Community",
+    community_text: "Join our discussion group, share sentences and ideas with others who love Nalari.",
+    news_title: "News",
+    news_text: "Latest updates and new resources are published here.",
+    contact_title: "Contact",
+    contact_text: "Do you have questions or want to contribute? Please send a message!",
+    contact_labels: {
+      name: "Name:",
+      email: "Email:",
+      message: "Message:",
+      send: "Send"
+    },
+    footer_text: "© 2025 Nalari – Created with magic and love.",
+    alert_message: "Thank you for your message! (this is just a demo)"
+  }
+};
+
+function updateLanguage(lang) {
+  document.title = texts[lang].title;
+  document.getElementById('title').textContent = texts[lang].title;
+
+  // Nav
+  const navItems = document.querySelectorAll('#nav-list li a');
+  navItems.forEach((a, i) => a.textContent = texts[lang].nav[i]);
+
+  // Home
+  document.getElementById('home-title').textContent = texts[lang].home_title;
+  document.getElementById('home-text').textContent = texts[lang].home_text;
+
+  // History
+  document.getElementById('history-title').textContent = texts[lang].history_title;
+  document.getElementById('history-text').textContent = texts[lang].history_text;
+
+  const historyList = document.getElementById('history-list');
+  historyList.innerHTML = '';
+  texts[lang].history_list.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    historyList.appendChild(li);
+  });
+
+  // Phonetics
+  document.getElementById('phonetics-title').textContent = texts[lang].phonetics_title;
+  document.getElementById('phonetics-text').textContent = texts[lang].phonetics_text;
+
+  // Grammar
+  document.getElementById('grammar-title').textContent = texts[lang].grammar_title;
+  document.getElementById('grammar-intro').textContent = texts[lang
