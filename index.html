@@ -3,119 +3,107 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Nalari – Det avancerade språket</title>
+<title>Nalari – Det stilrena avancerade språket</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
 <style>
-  /* Reset */
+  /* Grundläggande reset och typsnitt */
   *, *::before, *::after {
     box-sizing: border-box;
   }
   body {
-    margin: 0; padding: 0;
+    margin: 0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #f0f0f5;
+    background: linear-gradient(135deg, #0a192f, #1e2a47);
+    color: #e6f0ff;
     min-height: 100vh;
+    scroll-behavior: smooth;
   }
   a {
-    color: #76c7ff;
+    color: #63b3ed;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
   }
   a:hover, a:focus {
-    color: #a0d8ff;
+    color: #a1cdf1;
     outline: none;
   }
 
-  /* Container */
+  /* Container maxbredd */
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 3rem 1rem 6rem;
+    padding: 2rem 1rem 5rem;
   }
 
-  /* Hero section */
+  /* Header / Hero */
   header {
     text-align: center;
-    padding: 6rem 1rem 8rem;
-    background: linear-gradient(135deg, rgba(118,199,255,0.25), rgba(44,83,100,0.1));
-    border-radius: 30px;
-    box-shadow:
-      0 8px 24px rgba(118,199,255,0.3),
-      inset 0 0 60px rgba(118,199,255,0.4);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    color: #e1f0ff;
-    margin-bottom: 4rem;
+    padding: 8rem 1rem 6rem;
+    background: linear-gradient(145deg, #1c3a70, #2951a3);
+    border-radius: 2rem;
+    box-shadow: 0 20px 60px rgba(40, 75, 150, 0.6);
   }
   header h1 {
     font-weight: 900;
-    font-size: 4rem;
-    margin-bottom: 0.3rem;
-    letter-spacing: 0.06em;
-    text-shadow:
-      0 0 5px #56aaff,
-      0 0 10px #3399ff,
-      0 0 20px #0071e3;
+    font-size: 4.5rem;
+    margin: 0 0 0.3rem;
+    letter-spacing: 0.1em;
+    color: #c2d6ff;
+    text-shadow: 0 0 12px #557fcc;
   }
   header p {
     font-weight: 600;
-    font-size: 1.5rem;
-    max-width: 540px;
+    font-size: 1.6rem;
+    max-width: 580px;
     margin: 0 auto;
-    text-shadow: 0 0 8px rgba(0, 113, 227, 0.6);
+    color: #a8bfffcc;
   }
 
-  /* Navigation (tabbar) */
+  /* Navigation - flikar */
   nav {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
     flex-wrap: wrap;
   }
   nav button {
-    background: rgba(255 255 255 / 0.1);
-    border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.125rem;
+    background: transparent;
+    border: 2px solid #557fcc88;
+    border-radius: 30px;
+    padding: 0.75rem 2.5rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: #a0cfff;
+    color: #a8bfffcc;
     cursor: pointer;
-    border-radius: 18px;
-    box-shadow:
-      0 0 10px rgba(118,199,255,0.3);
     transition:
-      background-color 0.4s ease,
-      color 0.4s ease,
-      box-shadow 0.4s ease,
-      transform 0.2s ease;
+      background-color 0.35s ease,
+      color 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
     user-select: none;
   }
   nav button:hover:not(.active),
   nav button:focus:not(.active) {
-    background: rgba(118,199,255,0.3);
-    color: #e0f4ff;
-    box-shadow:
-      0 0 18px rgba(118,199,255,0.7);
+    background-color: #3e61b7cc;
+    color: #e0e9ff;
+    border-color: #7da8ff;
     outline: none;
-    transform: translateY(-2px);
   }
   nav button.active {
-    background: #0071e3;
-    color: #fff;
+    background-color: #557fcc;
+    color: white;
+    border-color: #557fcc;
     box-shadow:
-      0 0 25px #0071e3,
-      0 0 40px #3399ff;
+      0 4px 14px #557fcccc;
     cursor: default;
-    transform: translateY(-3px);
   }
 
-  /* Section styles */
+  /* Sektioner */
   section {
     display: none;
-    animation: fadeInUp 0.7s ease forwards;
+    animation: fadeIn 0.7s ease forwards;
   }
   section.active {
     display: block;
@@ -123,93 +111,70 @@
   section h2 {
     font-weight: 900;
     font-size: 2.8rem;
+    color: #92aaff;
     margin-bottom: 1rem;
-    color: #a0d8ff;
-    text-shadow: 0 0 8px #3399ff;
     letter-spacing: 0.05em;
+    text-shadow: 0 0 8px #557fccaa;
   }
   section p, section ul {
-    font-size: 1.1rem;
-    color: #d0e6ff;
-    max-width: 760px;
+    font-size: 1.15rem;
     line-height: 1.7;
+    max-width: 720px;
+    margin-bottom: 1rem;
+    color: #c2d6ffcc;
   }
   section ul {
     padding-left: 1.6rem;
   }
   section ul li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.7rem;
   }
   section code {
-    background: rgba(255 255 255 / 0.12);
-    padding: 2px 6px;
+    background-color: rgba(100, 140, 255, 0.2);
+    padding: 3px 7px;
     border-radius: 6px;
     font-family: 'Source Code Pro', monospace, monospace;
     font-weight: 700;
-    color: #80caff;
+    color: #cce4ff;
   }
   section em {
     font-style: normal;
     font-weight: 700;
-    color: #cde6ff;
+    color: #a6bfff;
   }
 
-  /* Alphabet grid */
+  /* Alfabetgrid */
   .alphabet-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(80px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(70px,1fr));
     gap: 1.2rem;
     margin-top: 1rem;
+    max-width: 720px;
   }
   .letter-card {
-    background: rgba(255 255 255 / 0.15);
-    border-radius: 16px;
-    padding: 1.6rem 0;
+    background: rgba(100, 140, 255, 0.15);
+    border-radius: 20px;
+    padding: 1.5rem 0;
     text-align: center;
     font-weight: 900;
-    font-size: 2.8rem;
-    color: #cce8ff;
+    font-size: 2.5rem;
+    color: #accdff;
     user-select: none;
-    box-shadow:
-      0 8px 18px rgba(0, 113, 227, 0.3);
-    cursor: pointer;
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.3s ease,
-      background-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  .letter-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(118,199,255,0.3) 0%, transparent 70%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-  }
-  .letter-card:hover::before,
-  .letter-card:focus::before {
-    opacity: 1;
+    box-shadow: 0 8px 20px rgba(86, 125, 255, 0.4);
+    cursor: default;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .letter-card:hover,
   .letter-card:focus {
-    transform: translateY(-8px);
-    box-shadow:
-      0 12px 32px rgba(0, 113, 227, 0.7);
-    background-color: rgba(118,199,255,0.25);
+    transform: translateY(-7px);
+    box-shadow: 0 14px 40px rgba(86, 125, 255, 0.7);
     outline: none;
-    z-index: 10;
   }
   .letter-desc {
     font-weight: 400;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-top: 0.5rem;
-    color: #a0cfff;
+    color: #bcd9ff;
     line-height: 1.3;
     user-select: text;
   }
@@ -219,41 +184,40 @@
     text-align: center;
     padding: 2rem 1rem;
     font-size: 0.9rem;
-    color: #739ec7;
-    background: rgba(255 255 255 / 0.05);
-    box-shadow: inset 0 1px 4px rgb(0 0 0 / 0.1);
+    color: #8c9ccf99;
+    background: rgba(0, 0, 0, 0.1);
     user-select: none;
-    margin-top: 6rem;
+    margin-top: 5rem;
   }
 
-  /* Animations */
-  @keyframes fadeInUp {
-    0% {
+  /* Animation */
+  @keyframes fadeIn {
+    from {
       opacity: 0;
-      transform: translateY(15px);
+      transform: translateY(12px);
     }
-    100% {
+    to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  /* Responsive */
+  /* Responsiv */
   @media (max-width: 600px) {
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
     }
     header p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
     nav button {
       flex: 1 1 100%;
       padding: 1rem;
       font-size: 1.15rem;
-      border-radius: 12px;
+      border-radius: 18px;
     }
     .alphabet-grid {
-      grid-template-columns: repeat(auto-fit,minmax(60px,1fr));
+      grid-template-columns: repeat(auto-fit,minmax(55px,1fr));
       gap: 1rem;
     }
     .letter-card {
@@ -267,90 +231,104 @@
 
 <header>
   <h1>Nalari</h1>
-  <p>Det avancerade språket – stilrent, enkelt, vackert</p>
+  <p>Det stilrena, avancerade språket med enkel grammatik och vackert alfabet</p>
 </header>
 
-<nav role="tablist" aria-label="Navigationsmeny">
-  <button role="tab" aria-selected="true" aria-controls="tab-historia" id="tab-btn-historia" class="active" tabindex="0">Historia</button>
-  <button role="tab" aria-selected="false" aria-controls="tab-alfabet" id="tab-btn-alfabet" tabindex="-1">Alfabet</button>
-  <button role="tab" aria-selected="false" aria-controls="tab-grammatik" id="tab-btn-grammatik" tabindex="-1">Grammatik</button>
-  <button role="tab" aria-selected="false" aria-controls="tab-resurser" id="tab-btn-resurser" tabindex="-1">Resurser</button>
+<nav role="tablist" aria-label="Navigationsflikar">
+  <button role="tab" aria-selected="true" aria-controls="historia" id="tab-historia" class="active" tabindex="0">Historia</button>
+  <button role="tab" aria-selected="false" aria-controls="alfabet" id="tab-alfabet" tabindex="-1">Alfabet</button>
+  <button role="tab" aria-selected="false" aria-controls="grammatik" id="tab-grammatik" tabindex="-1">Grammatik</button>
+  <button role="tab" aria-selected="false" aria-controls="resurser" id="tab-resurser" tabindex="-1">Resurser</button>
 </nav>
 
 <main class="container">
-  <section id="tab-historia" role="tabpanel" aria-labelledby="tab-btn-historia" class="active" tabindex="0">
+  <section id="historia" role="tabpanel" aria-labelledby="tab-historia" tabindex="0" class="active">
     <h2>Historia</h2>
-    <p>Nalari skapades som ett stilrent och avancerat språk med enkel grammatik. Det utvecklades med fokus på tydlighet, skönhet och funktionalitet. Med sitt rika alfabet och harmoniska uttal har det blivit ett unikt och lättlärt språk.</p>
-    <p>Språket använder 9 konsonanter och 5 vokaler, och följer en enkel SVO-ordföljd (Subjekt-Verb-Objekt). Utformningen av alfabetet och uttalet är inspirerat av flera världsspråk men bibehåller en egen karaktär.</p>
+    <p>Nalari är ett stilrent och avancerat konstruerat språk skapat med fokus på enkelhet och estetik. Med en unik kombination av tydliga ljud och enkel grammatik strävar Nalari efter att vara både vackert och funktionellt.</p>
+    <p>Språket utvecklades med inspiration från många världsspråk och skapades för att vara lättlärt, samtidigt som det erbjuder rika möjligheter att uttrycka sig nyanserat.</p>
   </section>
 
-  <section id="tab-alfabet" role="tabpanel" aria-labelledby="tab-btn-alfabet" tabindex="0" hidden>
+  <section id="alfabet" role="tabpanel" aria-labelledby="tab-alfabet" tabindex="0" hidden>
     <h2>Alfabet</h2>
-    <p>Alfabetet i Nalari består av följande bokstäver, med tydliga och mjuka ljud:</p>
+    <p>Nalari använder följande konsonanter och vokaler:</p>
     <div class="alphabet-grid" aria-label="Nalari alfabet">
-      <!-- Bokstäver genereras här av JavaScript -->
+      <!-- JavaScript genererar bokstäverna här -->
     </div>
   </section>
 
-  <section id="tab-grammatik" role="tabpanel" aria-labelledby="tab-btn-grammatik" tabindex="0" hidden>
+  <section id="grammatik" role="tabpanel" aria-labelledby="tab-grammatik" tabindex="0" hidden>
     <h2>Grammatik</h2>
-    <p>Nalari har enkel men kraftfull grammatik:</p>
+    <p>Nalari följer en enkel men tydlig grammatikstruktur som gör språket lätt att lära:</p>
     <ul>
       <li><strong>Ordordföljd:</strong> Subjekt – Verb – Objekt (SVO)</li>
-      <li><strong>Negation:</strong> Markeras med <code>no</code> före verbet, t.ex. <em>Mi no mira</em> (Jag äter inte)</li>
-      <li><strong>Plural:</strong> Suffix <code>-in</code> läggs till substantiv för att göra dem plural, t.ex. <em>meto</em> → <em>metoin</em> (människa, människor)</li>
-      <li><strong>Ägande:</strong> Suffix på substantiv, t.ex. <em>pano-mi</em> (min vän)</li>
+      <li><strong>Negation:</strong> Markerad med <code>no</code> före verbet, t.ex. <em>Mi no mira</em> (Jag äter inte)</li>
+      <li><strong>Plural:</strong> Substantiv får suffixet <code>-in</code> för plural, t.ex. <em>meto</em> → <em>metoin</em></li>
+      <li><strong>Ägande:</strong> Markeras med suffix på substantivet, t.ex. <em>pano-mi</em> (min vän)</li>
     </ul>
-    <p>Exempelmening:</p>
+    <p>Exempelmeningar:</p>
     <p><em>Mi lira nala.</em> – Jag går till vatten.</p>
     <p><em>Ti no mira toma.</em> – Du äter inte huset.</p>
   </section>
 
-  <section id="tab-resurser" role="tabpanel" aria-labelledby="tab-btn-resurser" tabindex="0" hidden>
+  <section id="resurser" role="tabpanel" aria-labelledby="tab-resurser" tabindex="0" hidden>
     <h2>Resurser</h2>
-    <p>Här hittar du användbara länkar, verktyg och dokumentation för att lära dig mer om Nalari.</p>
+    <p>Utforska mer om Nalari med dessa länkar och dokument:</p>
     <ul>
       <li><a href="#">Nalari ordbok (PDF)</a></li>
       <li><a href="#">Exempelmeningar och övningar</a></li>
-      <li><a href="#">Nalari alfabet ljudfiler</a></li>
+      <li><a href="#">Ljudfiler för alfabetet</a></li>
     </ul>
   </section>
 </main>
 
 <footer>
-  &copy; 2025 Nalari. All rights reserved.
+  &copy; 2025 Nalari — Alla rättigheter reserverade.
 </footer>
 
 <script>
-  // Tabbar funktionalitet
+  // Tabbar: Hantera visning och fokus
   const tabs = document.querySelectorAll('nav button');
-  const sections = document.querySelectorAll('main section');
-
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => {
-      activateTab(i);
-      tab.focus();
-    });
-
-    tab.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        const next = (i + 1) % tabs.length;
-        tabs[next].focus();
-        activateTab(next);
-      }
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        const prev = (i - 1 + tabs.length) % tabs.length;
-        tabs[prev].focus();
-        activateTab(prev);
-      }
-    });
-  });
+  const panels = document.querySelectorAll('main section');
 
   function activateTab(index) {
     tabs.forEach((tab, i) => {
       const selected = i === index;
       tab.classList.toggle('active', selected);
       tab.setAttribute('aria-selected', selected);
-      tab.tabIndex = selected ? 
+      tab.tabIndex = selected ? 0 : -1;
+      if (selected) {
+        panels[i].classList.add('active');
+        panels[i].removeAttribute('hidden');
+        panels[i].focus();
+      } else {
+        panels[i].classList.remove('active');
+        panels[i].setAttribute('hidden', '');
+      }
+    });
+  }
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activateTab(i));
+    tab.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        activateTab((i + 1) % tabs.length);
+        tabs[(i + 1) % tabs.length].focus();
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        activateTab((i - 1 + tabs.length) % tabs.length);
+        tabs[(i - 1 + tabs.length) % tabs.length].focus();
+      }
+    });
+  });
+
+  // Generera alfabetets bokstäver med beskrivning
+  const alphabetLetters = [
+    {letter: 'p', desc: 'Konsonant'},
+    {letter: 't', desc: 'Konsonant'},
+    {letter: 'k', desc: 'Konsonant'},
+    {letter: 'm', desc: 'Konsonant'},
+    {letter: 'n', desc: 'Konsonant'},
+    {letter: 's', desc: 'Konsonant'},
+    {
