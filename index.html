@@ -3,261 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nalari – Ditt unika språk</title>
+  <title>Nalari - Språkets hemsida</title>
   
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans&display=swap" rel="stylesheet" />
-  
+  <!-- Font Awesome för ikoner -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pV4TFnNjw+Fzj+6WvVrLAGL3m17KYyOpK3+EZikksQSB3b/E7T5dELphHKxG4y3GQ1RYCVXqXrQ96M+ZXpN9wg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
   <style>
-    /* RESET & BASSTIL */
-    * {
-      box-sizing: border-box;
-    }
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background: linear-gradient(135deg, #3a86ff, #ffbe0b);
+      background: #f9fafb;
       color: #222;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      line-height: 1.6;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    /* HEADER */
     header {
-      background: rgba(255 255 255 / 0.85);
+      background-color: #4b6cb7;
+      background-image: linear-gradient(315deg, #4b6cb7 0%, #182848 74%);
+      color: white;
       padding: 2rem 1rem;
       text-align: center;
-      box-shadow: 0 4px 15px rgb(0 0 0 / 0.15);
     }
     header h1 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 3.2rem;
-      color: #3a0868;
-      margin: 0 0 0.25rem 0;
-      letter-spacing: 0.05em;
+      margin: 0;
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: 3px;
     }
     header p {
-      font-size: 1.25rem;
-      max-width: 600px;
-      margin: 0 auto;
-      color: #4b3f72;
-      font-weight: 600;
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #cbd5e1;
     }
-    /* SPRÅKVÄLJARE */
-    #language-switcher {
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section.intro {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    section.intro img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       margin-top: 1rem;
     }
-    #language-switcher button {
-      background: #3a0868;
-      color: white;
-      border: none;
-      margin: 0 0.25rem;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #language-switcher button:hover,
-    #language-switcher button.active {
-      background: #ffbe0b;
-      color: #3a0868;
-    }
-    /* MAIN INNEHÅLL */
-    main {
-      flex-grow: 1;
-      padding: 2rem 1rem;
-      max-width: 960px;
-      margin: 0 auto 3rem;
-      background: rgba(255 255 255 / 0.9);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgb(0 0 0 / 0.12);
-    }
-    section {
+    section.features {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
       margin-bottom: 3rem;
     }
-    h2 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 2.4rem;
-      color: #3a0868;
-      border-bottom: 3px solid #ffbe0b;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-      max-width: max-content;
-    }
-    p {
-      font-size: 1.15rem;
-      line-height: 1.6;
-      color: #444;
-      max-width: 720px;
-    }
-    /* Knappar */
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      background-color: #3a0868;
-      color: white;
-      font-weight: 600;
-      padding: 0.75rem 1.6rem;
-      border-radius: 30px;
-      box-shadow: 0 6px 12px rgb(58 8 104 / 0.6);
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #ffbe0b;
-      color: #3a0868;
-      box-shadow: 0 6px 12px rgb(255 190 11 / 0.9);
-    }
-    /* Alfabetbilder */
-    #alphabet-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-    .letter {
-      text-align: center;
-      cursor: pointer;
-      width: 70px;
-      transition: transform 0.3s ease;
-    }
-    .letter img {
-      width: 70px;
-      height: 70px;
-      border-radius: 14px;
-      box-shadow: 0 4px 10px rgba(58, 8, 104, 0.25);
-      object-fit: contain;
+    .feature {
       background: white;
-      border: 2px solid #3a0868;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      flex: 1 1 250px;
+      max-width: 280px;
+      text-align: center;
+      transition: transform 0.2s ease;
     }
-    .letter div {
-      margin-top: 0.3rem;
-      font-weight: 700;
-      color: #3a0868;
-      font-size: 1.2rem;
-      user-select: none;
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
     }
-    .letter:hover {
-      transform: scale(1.1);
+    .feature i {
+      font-size: 3rem;
+      color: #4b6cb7;
+      margin-bottom: 0.8rem;
     }
-    /* FOOTER */
     footer {
       text-align: center;
-      padding: 1rem;
-      background: rgba(58, 8, 104, 0.1);
+      padding: 1.5rem;
       font-size: 0.9rem;
-      color: #3a0868;
-      user-select: none;
+      color: #666;
+      border-top: 1px solid #ddd;
+      margin-top: 3rem;
     }
-    /* RESPONSIVT */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-      main {
-        margin: 0 1rem 3rem;
-        padding: 1.5rem;
-      }
-      h2 {
-        font-size: 1.8rem;
-      }
-      .letter {
-        width: 55px;
-      }
-      .letter img {
-        width: 55px;
-        height: 55px;
-      }
+    a {
+      color: #4b6cb7;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Nalari</h1>
+    <p>Det nya konstruerade språket – Skapat tillsammans</p>
+  </header>
 
-<header>
-  <h1>Nalari</h1>
-  <p>Upptäck det unika språket Nalari – enkelt, vackert och funktionellt.</p>
-  <div id="language-switcher">
-    <button class="active" data-lang="sv">Svenska</button>
-    <button data-lang="en">English</button>
-    <button data-lang="na">Nalari</button>
-  </div>
-</header>
+  <main>
+    <section class="intro">
+      <h2>Välkommen till Nalari</h2>
+      <p>
+        Nalari är ett unikt konstruerat språk med egen fonetik, grammatik och kultur. Utforska språkets skönhet och lär dig nya sätt att uttrycka dig.
+      </p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="Naturscen som symboliserar språkets skönhet" />
+    </section>
 
-<main>
-  <section id="intro">
-    <h2>Välkommen till Nalari</h2>
-    <p>Nalari är ett konstruerat språk med enkel grammatik och ett vackert ljudsystem. Här kan du lära dig alfabetet, fonetiken, grammatiken och mycket mer.</p>
-    <a href="alphabet.html" class="btn">Utforska alfabetet</a>
-  </section>
+    <section class="features">
+      <div class="feature">
+        <i class="fa-solid fa-language"></i>
+        <h3>Fonetik & Grammatik</h3>
+        <p>Nalari har ett tydligt fonetiskt system med rullande r och sex vokaler samt enkel men rik grammatik.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-book-open"></i>
+        <h3>Ordförråd</h3>
+        <p>Utveckla och upptäck ett växande ordförråd som gör det enkelt att uttrycka komplexa idéer.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-globe"></i>
+        <h3>Gemenskap</h3>
+        <p>Bli en del av en växande grupp språkentusiaster som lär sig och använder Nalari tillsammans.</p>
+      </div>
+    </section>
+  </main>
 
-  <section id="alphabet">
-    <h2>Fonetik & Alfabet</h2>
-    <p>Det Nalari-alfabetet består av 13 tydliga bokstäver. Klicka på bokstäverna för att höra hur de låter!</p>
-    <div id="alphabet-container">
-      <!-- Bokstäver genereras med JS -->
-    </div>
-  </section>
-
-  <section id="grammar">
-    <h2>Grammatik</h2>
-    <p>Enkel SVO-ordföljd, tydliga tidsmarkörer och negation. Nalari är lätt att lära sig men ändå uttrycksfullt.</p>
-    <a href="grammar.html" class="btn">Läs mer om grammatiken</a>
-  </section>
-
-  <section id="vocabulary">
-    <h2>Ordförråd</h2>
-    <p>Bygg ditt ordförråd steg för steg. Här hittar du vanliga ord och fraser på Nalari.</p>
-    <a href="vocabulary.html" class="btn">Börja lära dig ord</a>
-  </section>
-</main>
-
-<footer>
-  &copy; 2025 Nalari. Alla rättigheter förbehållna.
-</footer>
-
-<script>
-  // Lista med bokstäver i alfabetet och bildfilnamn
-  const alphabet = [
-    { letter: 'P', file: 'p.png' },
-    { letter: 'T', file: 't.png' },
-    { letter: 'K', file: 'k.png' },
-    { letter: 'M', file: 'm.png' },
-    { letter: 'N', file: 'n.png' },
-    { letter: 'S', file: 's.png' },
-    { letter: 'L', file: 'l.png' },
-    { letter: 'R', file: 'r.png' },
-    { letter: 'A', file: 'a.png' },
-    { letter: 'E', file: 'e.png' },
-    { letter: 'I', file: 'i.png' },
-    { letter: 'O', file: 'o.png' },
-    { letter: 'U', file: 'u.png' },
-  ];
-
-  const container = document.getElementById('alphabet-container');
-
-  alphabet.forEach(({ letter, file }) => {
-    const div = document.createElement('div');
-    div.classList.add('letter');
-
-    // Bilden - byt 'images/' till din sökväg för bilderna
-    const img = document.createElement('img');
-    img.src = `images/${file}`;
-    img.alt = `Bokstaven ${letter}`;
-
-    // Text under bilden
-    const text = document.createElement('div');
-    text.textContent = letter;
-
-    div.appendChild(img);
-    div.appendChild(text);
-
-    // Eventuell klickfunktion för ljud kommer här (om du lägger till ljudfiler)
-    div.addEventListener('click',
+  <footer>
+    &copy; 2025 Markus Fern. <a href="https://markusfern.github.io/Nalari/index.html">Besök Nalari-sidan</a>
+  </footer>
+</body>
+</html>
